@@ -22,7 +22,6 @@
     "vue-material": "^1.0.0-beta-4",
     "vue-progressive-image": "^2.3.2",
     "vue-router": "^3.0.1",
-    "vue-sticky": "^3.3.1",
     "vue-swal": "0.0.6",
     "vue-touch-ripple": "^2.4.0"
   },

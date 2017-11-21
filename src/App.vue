@@ -1,18 +1,13 @@
 <template>
   <div id="app">
-    <el-container>
-
       <header-component/>
       <div style="width:100%; height: 52px;"></div>
-      <el-main>
+
         <router-view/>
-      </el-main>
 
       <el-footer>
         <footer-component/>
       </el-footer>
-
-    </el-container>
   </div>
 </template>
 
@@ -36,6 +31,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  height: 2000px;
+  padding-bottom: 100px;
+  background-color: #f3f3f3;
 }
 </style>

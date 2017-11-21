@@ -1,29 +1,31 @@
 <template>
   <div class="zm-header">
-    <div class="zm-logo">
-      青菜帮
-    </div>
-    <div class="zm-header-options">
-      <div class="">
-        首页
+    <div class="zm-header-inner">
+      <div class="zm-logo">
+        青菜帮
       </div>
-      <div class="">
-        潮流新品
+      <div class="zm-header-options">
+        <div class="">
+          首页
+        </div>
+        <div class="">
+          潮流新品
+        </div>
+        <div class="">
+          最新全系列
+        </div>
       </div>
-      <div class="">
-        最新全系列
+      <div class="zm-header-search">
+        <el-autocomplete class="zm-search-inner" v-model="state" :fetch-suggestions="querySearchAsync" placeholder="搜索创业秘方..." @select="handleSelect"></el-autocomplete>
+        <el-button type="primary">搜索</el-button>
       </div>
-    </div>
-    <div class="zm-header-search">
-      <el-autocomplete class="zm-search-inner" v-model="state4" :fetch-suggestions="querySearchAsync" placeholder="搜索创业秘方..." @select="handleSelect"></el-autocomplete>
-      <el-button type="primary">搜索</el-button>
-    </div>
-    <div class="zm-header-join">
-      <div class="">
-        登录
-      </div>
-      <div class="">
-        注册
+      <div class="zm-header-join">
+        <div class="">
+          登录
+        </div>
+        <div class="">
+          注册
+        </div>
       </div>
     </div>
   </div>
@@ -32,18 +34,16 @@
 export default {
   name: 'HeaderComponent',
   data () {
-    return {}
+    return {
+      state: ''
+    }
   },
   methods: {
-    onSelect (item) {
-      this.item = item
+    querySearchAsync () {
+
     },
-    reset () {
-      this.item = {}
-    },
-    selectOption () {
-      // select option from parent component
-      this.item = this.options[0]
+    handleSelect () {
+
     }
   }
 }
@@ -53,19 +53,22 @@ export default {
 .zm-header {
   position: fixed;
   width: 100%;
-  padding: 0 10%;
-  box-sizing: border-box;
-  z-index: 100;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  /*position: relative;*/
+  z-index: 1000;
   overflow: hidden;
   background: rgba(255,255,255,0.8);
   height: 52px;
   -webkit-box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
   box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
   background-clip: content-box;
+}
+.zm-header-inner {
+  width: 100%;
+  padding: 0 10%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 4px;
 }
 .zm-logo {
   font-size: 30px;
