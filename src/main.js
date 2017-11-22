@@ -5,7 +5,7 @@
  * @Project: one_server
  * @Filename: main.js
  * @Last modified by:   mymac
- * @Last modified time: 2017-11-21T17:15:15+08:00
+ * @Last modified time: 2017-11-21T22:38:27+08:00
  */
 
 // The Vue build version to load with the `import` command
@@ -16,7 +16,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 // import VueProgressiveImage from 'vue-progressive-image'
 // import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
-// import VueTouchRipple from 'vue-touch-ripple'
+import VueTouchRipple from 'vue-touch-ripple'
 // import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import VueSwal from 'vue-swal'
 
@@ -27,7 +27,7 @@ import router from './router'
 // import VueImg from 'v-img'
 // import VModal from 'vue-js-modal'
 
-// require('vue-touch-ripple/component.css')
+require('vue-touch-ripple/component.css')
 // Vue.use(VueProgressiveImage)
 // Vue.use(VModal)
 // Vue.use(VueSwal)
@@ -37,7 +37,7 @@ Vue.use(ElementUI)
 // Vue.use(MdButton)
 // Vue.use(MdContent)
 // Vue.use(MdTabs)
-// Vue.use(VueTouchRipple)
+Vue.use(VueTouchRipple)
 // Vue.use(VueAwesomeSwiper)
 
 Vue.config.productionTip = false

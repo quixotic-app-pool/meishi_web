@@ -5,7 +5,7 @@
  * @Project: one_server
  * @Filename: index.js
  * @Last modified by:   mymac
- * @Last modified time: 2017-11-21T13:52:00+08:00
+ * @Last modified time: 2017-11-22T12:08:42+08:00
  */
 
 import Vue from 'vue'
@@ -20,12 +20,12 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/main',
       name: 'MainPage',
       component: MainPage
     },
     {
-      path: '/item',
+      path: '/',
       name: 'ItemPage',
       component: ItemPage
     },

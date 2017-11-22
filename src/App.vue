@@ -2,12 +2,7 @@
   <div id="app">
       <header-component/>
       <div style="width:100%; height: 52px;"></div>
-
-        <router-view/>
-
-      <el-footer>
-        <footer-component/>
-      </el-footer>
+      <router-view/>
   </div>
 </template>
 
@@ -31,7 +26,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  padding-bottom: 100px;
   background-color: #f3f3f3;
 }
 </style>

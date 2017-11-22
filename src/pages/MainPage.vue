@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding-bottom: 300px;">
     <div class="zm-swiper-container" style="margin-top: 10px;">
       <div class="zm-swiper-container-inner">
         <el-carousel :interval="4000" type="card" height="300px">
@@ -76,7 +76,7 @@
             </div>
           </div>
         </div>
-        <div class="zm-promo-aside" >
+        <div class="zm-promo-aside">
             <div class="zm-promo-aside-inner" style="" v-sticky= '{ zIndex: 1, stickyTop: 70}'>
                 <div class="">
                   <div style="display:flex; flex-direction:row; align-items:center;  padding: 10px 0 0 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
@@ -94,7 +94,7 @@
                     热点项目
                 </div>
                 <div style="padding: 0 5px 5px 5px; display:flex; flex-direction: row;" v-for="(item, index) in 5" :key='item'>
-                    <img style="height: 70px; width: 50%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg" alt="">
+                    <img style="filter: blur(1px); height: 70px; width: 50%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg" alt="">
                     <div style="display: flex; flex-direction: column; justify-content:flex-start;">
                       <div style="padding-left: 3px; font-weight:bold; text-align: left;">
                         超级好吃无敌蛋糕
@@ -122,14 +122,22 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
+.zm-promo-img-effect {
+  transition: transform .5s;
+}
+.zm-promo-img-effect:hover, .zm-promo-img-effect:focus {
+  transform: scale3d(1.006, 1.006, 1);
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .15);
+  border-radius: 4px;
+}
 .sticky {
   position: fixed;
   top: 0;
   width: 100%
 }
 .zm-main-left {
-  width: 100%;
+  width: 70%;
   margin-right: 10px;
 }
 .zm-promo-one-list {
@@ -222,7 +230,6 @@ export default {
     width: 100%;
     display: block;
   }
-
   .clearfix:before,
   .clearfix:after {
       display: table;

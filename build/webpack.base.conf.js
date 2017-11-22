@@ -1,8 +1,21 @@
+/**
+ * @Author: MichaelChen <mymac>
+ * @Date:   2017-11-20T16:27:16+08:00
+ * @Email:  teacherincafe@163.com
+ * @Project: one_server
+ * @Filename: webpack.base.conf.js
+ * @Last modified by:   mymac
+ * @Last modified time: 2017-11-21T23:07:19+08:00
+ */
+
+
+
 'use strict'
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require('webpack')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -74,5 +87,13 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jquery: 'jquery',
+      'window.jQuery': 'jquery',
+      jQuery: 'jquery'
+    })
+  ]
 }
