@@ -5,7 +5,7 @@
  * @Project: one_server
  * @Filename: index.js
  * @Last modified by:   mymac
- * @Last modified time: 2017-11-23T11:41:59+08:00
+ * @Last modified time: 2017-11-23T14:43:22+08:00
  */
 
 import Vue from 'vue'
@@ -16,6 +16,7 @@ import ItemPage from '@/pages/ItemPage'
 import LogInPage from '@/pages/LogInPage'
 import AllCategoryPage from '@/pages/AllCategoryPage'
 import OneCategoryPage from '@/pages/OneCategoryPage'
+import MinePage from '@/pages/MinePage'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'MinePage',
+      component: MinePage
+    },
+    {
+      path: '/one',
       name: 'OneCategoryPage',
       component: OneCategoryPage
     },
