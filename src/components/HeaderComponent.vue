@@ -1,17 +1,17 @@
 <template>
   <div class="zm-header">
     <div class="zm-header-inner">
-      <div class="zm-logo">
+      <div class="zm-logo pointer" >
         青菜帮
       </div>
       <div class="zm-header-options">
-        <div class="">
+        <div class="pointer">
           首页
         </div>
-        <div class="">
+        <div class="pointer">
           潮流新品
         </div>
-        <div class="">
+        <div class="pointer">
           最新全系列
         </div>
       </div>
@@ -20,10 +20,10 @@
         <el-button type="primary">搜索</el-button>
       </div>
       <div class="zm-header-join">
-        <div class="">
+        <div class="pointer">
           登录
         </div>
-        <div class="">
+        <div class="pointer">
           注册
         </div>
       </div>
@@ -50,6 +50,9 @@ export default {
 </script>
 
 <style scoped>
+.pointer {
+  cursor: pointer;
+}
 .zm-header {
   position: fixed;
   width: 100%;

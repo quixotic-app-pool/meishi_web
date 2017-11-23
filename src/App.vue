@@ -3,6 +3,7 @@
       <header-component/>
       <div style="width:100%; height: 52px;"></div>
       <router-view/>
+      <footer-component />
   </div>
 </template>
 
@@ -21,7 +22,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: sans-serif, 'Avenir', Helvetica, Arial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

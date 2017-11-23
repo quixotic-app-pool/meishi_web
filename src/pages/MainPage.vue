@@ -1,5 +1,5 @@
 <template>
-  <div style="padding-bottom: 300px;">
+  <div>
     <div class="zm-swiper-container" style="margin-top: 10px;">
       <div class="zm-swiper-container-inner">
         <el-carousel :interval="4000" type="card" height="300px">
@@ -14,12 +14,15 @@
         <div class="zm-main-left">
           <div class="zm-promo-one">
             <div class="zm-promo-title1">
-              市场新流
+              <div >
+                市场新流
+              </div>
+              <a class="zm-promo-link" href="#">全部</a>
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
                 <el-col :span="8" v-for="(o, index) in 3" :key="o" :offset="index > 0 ? 2 : 0">
-                  <el-card :body-style="{ padding: '0px' }">
+                  <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
                     <img src="https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg" class="image">
                     <div style="padding: 14px;">
                       <span>Yummy hamburger</span>
@@ -35,12 +38,15 @@
           </div>
           <div class="zm-promo-one" style="margin-top: 20px;">
             <div class="zm-promo-title1">
-              活动新品
+              <div >
+                活动新品
+              </div>
+              <a class="zm-promo-link" href="#">全部</a>
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
                 <el-col :span="8" v-for="(o, index) in 3" :key="o" :offset="index > 0 ? 2 : 0">
-                  <el-card :body-style="{ padding: '0px' }">
+                  <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
                     <img src="http://cphualientour.weebly.com/uploads/4/5/8/0/45800523/3058957_orig.jpg" class="image">
                     <div style="padding: 14px;">
                       <span>Yummy hamburger</span>
@@ -56,12 +62,15 @@
           </div>
           <div class="zm-promo-one" style="margin-top: 20px;">
             <div class="zm-promo-title1">
-              热门搜索
+              <div >
+                热门搜索
+              </div>
+              <a class="zm-promo-link" href="#">全部</a>
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
                 <el-col :span="8" v-for="(o, index) in 3" :key="o" :offset="index > 0 ? 2 : 0">
-                  <el-card :body-style="{ padding: '0px' }">
+                  <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
                     <img src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg" class="image">
                     <div style="padding: 14px;">
                       <span>Yummy hamburger</span>
@@ -75,17 +84,61 @@
               </el-row>
             </div>
           </div>
+          <div class="zm-promo-one" style="margin-top: 20px;">
+            <div style="display:flex; flex-direction: column;">
+              <div class="zm-promo-title1">
+                <div >
+                  投资人常见问题
+                </div>
+                <a class="zm-promo-link" href="#">全部</a>
+              </div>
+              <div v-for="(item, index) in 4" :key="index" style="display:flex; justify-content:space-between; padding:5px 0;">
+                  <a class="zm-invest-question-title" href="#">如何在线学习</a>
+                  <div style="color:#909090; font-size:12px;">
+                    5人参与
+                  </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="zm-promo-aside">
-            <div class="zm-promo-aside-inner" style="" v-sticky= '{ zIndex: 1, stickyTop: 70}'>
-                <div class="">
-                  <div style="display:flex; flex-direction:row; align-items:center;  padding: 10px 0 0 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
-                    <img style="width: auto; height: 50px;" src="./weixin.jpeg" alt="">
-                    <div class="">
-                      联系我们
+          <div class="zm-promo-aside-inner">
+            <div style="padding: 30px 0; display: flex; flex-direction:column; justify-content:center; align-items:center;">
+              <img style="height: 60px; width: 60px; border-radius:30px;" src="./einstain.jpeg" alt="">
+              <div style="padding-top: 20px; font-size: 18px;">
+                 我是偶像爱因斯坦
+              </div>
+              <div style="padding: 0 0 20px 0; font-size: 12px;">
+                <a class="zm-main-link" href="#">10 收藏</a> |
+                <a class="zm-main-link"  href="#">5 配方</a>
+              </div>
+              <el-button type="danger" name="button">继续学习</el-button>
+            </div>
+          </div>
+            <div class="zm-promo-aside-inner">
+                <div style="display:flex; align-items:center;">
+                  <el-popover ref="popover1" placement="right" title="扫描下方二维码，联系客服" width="200" trigger="hover">
+                    <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="./example_erweima.png" alt="">
+                  </el-popover>
+                    <div v-popover:popover1 style="cursor:pointer; display:flex; flex-direction:row; align-items:center;  padding: 0 0 0 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
+                      <img style="width: auto; height: 50px;" src="./weixin.jpeg" alt="">
+                      <div class="">
+                        微信联系我们
+                      </div>
                     </div>
-                  </div>
-                  <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="./example_erweima.png" alt="">
+                </div>
+            </div>
+            <div class="zm-promo-aside-inner">
+                <div style="display:flex; align-items:center;">
+                  <el-popover ref="popover1" placement="right" title="支持苹果和安卓手机" width="200" trigger="hover">
+                    <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="./example_erweima.png" alt="">
+                  </el-popover>
+                    <div v-popover:popover1 style="cursor:pointer; display:flex; flex-direction:row; align-items:center;  padding: 0 0 0 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
+                      <img style="width: auto; height: 50px;" src="http://www.techreviewer.co.uk/wp-content/uploads/2017/02/apps.jpg" alt="">
+                      <div class="">
+                        下载我们的APP
+                      </div>
+                    </div>
                 </div>
             </div>
             <div class="zm-promo-aside-inner" v-sticky= '{ zIndex: 1, stickyTop: 70}'>
@@ -93,7 +146,7 @@
                 <div style="margin-bottom: 16px; padding: 10px 0 10px 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
                     热点项目
                 </div>
-                <div style="padding: 0 5px 5px 5px; display:flex; flex-direction: row;" v-for="(item, index) in 5" :key='item'>
+                <div style="cursor: pointer;padding: 0 5px 5px 5px; display:flex; flex-direction: row;" v-for="(item, index) in 5" :key='item'>
                     <img style="filter: blur(1px); height: 70px; width: 50%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg" alt="">
                     <div style="display: flex; flex-direction: column; justify-content:flex-start;">
                       <div style="padding-left: 3px; font-weight:bold; text-align: left;">
@@ -123,6 +176,33 @@ export default {
 }
 </script>
 <style>
+.zm-promo-link {
+  text-decoration: none;
+  color: #dd3915;
+  font-size: 14px;
+  margin-left: 20px;
+  font-weight: normal;
+}
+.zm-promo-link:hover {
+  background-color: #fa5555;
+  color: white;
+}
+.zm-invest-question-title {
+  font-size: 16px;
+  text-decoration:none;
+  color: black;
+}
+.zm-invest-question-title:hover {
+  color: #dd3915;
+}
+.zm-main-link {
+  text-decoration:none;
+  color: #dd3915;
+}
+.zm-main-link:hover {
+  background-color: #fa5555;
+  color: white;
+}
 .zm-promo-img-effect {
   transition: transform .5s;
 }
@@ -174,6 +254,7 @@ export default {
 }
 .zm-promo-title1 {
   display: flex;
+  align-items: center;
   font-size: 20px;
   font-weight: 700;
   color: #c0ae7d;
