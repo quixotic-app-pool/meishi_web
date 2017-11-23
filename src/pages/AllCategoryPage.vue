@@ -6,7 +6,7 @@
       </div>
       <div class="zm-all-box">
         <div class="zm-all-box-inner">
-          <div class="zm-all-topic" v-for="(item1, index1) in 6" :key="index1" >
+          <div class="zm-all-topic" v-for="(item1, index1) in 4" :key="index1" >
             <div class="zm-all-topic-title">
               热门专题
             </div>

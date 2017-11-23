@@ -5,7 +5,7 @@
  * @Project: one_server
  * @Filename: index.js
  * @Last modified by:   mymac
- * @Last modified time: 2017-11-23T10:54:36+08:00
+ * @Last modified time: 2017-11-23T11:41:59+08:00
  */
 
 import Vue from 'vue'
@@ -15,6 +15,7 @@ import MainPage from '@/pages/MainPage'
 import ItemPage from '@/pages/ItemPage'
 import LogInPage from '@/pages/LogInPage'
 import AllCategoryPage from '@/pages/AllCategoryPage'
+import OneCategoryPage from '@/pages/OneCategoryPage'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'OneCategoryPage',
+      component: OneCategoryPage
+    },
+    {
+      path: '/all',
       name: 'AllCategoryPage',
       component: AllCategoryPage
     },
