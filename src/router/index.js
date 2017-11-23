@@ -5,7 +5,7 @@
  * @Project: one_server
  * @Filename: index.js
  * @Last modified by:   mymac
- * @Last modified time: 2017-11-23T14:43:22+08:00
+ * @Last modified time: 2017-11-23T16:19:04+08:00
  */
 
 import Vue from 'vue'
@@ -17,11 +17,17 @@ import LogInPage from '@/pages/LogInPage'
 import AllCategoryPage from '@/pages/AllCategoryPage'
 import OneCategoryPage from '@/pages/OneCategoryPage'
 import MinePage from '@/pages/MinePage'
+import SettingPage from '@/pages/SettingPage'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'SettingPage',
+      component: SettingPage
+    },
     {
       path: '/',
       name: 'MinePage',
