@@ -5,7 +5,7 @@
  * @Project: one_server
  * @Filename: main.js
  * @Last modified by:   mymac
- * @Last modified time: 2017-11-21T22:38:27+08:00
+ * @Last modified time: 2017-12-17T13:31:54+08:00
  */
 
 // The Vue build version to load with the `import` command
@@ -17,13 +17,15 @@ import 'element-ui/lib/theme-chalk/index.css'
 // import VueProgressiveImage from 'vue-progressive-image'
 // import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
 import VueTouchRipple from 'vue-touch-ripple'
-// import VueAwesomeSwiper from 'vue-awesome-swiper'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import VueSwal from 'vue-swal'
+
+import VueSocketio from 'vue-socket.io'
 
 import App from './App'
 import router from './router'
 // require('vue-material/dist/vue-material.min.css')
-// require('swiper/dist/css/swiper.css')
+require('swiper/dist/css/swiper.css')
 // import VueImg from 'v-img'
 // import VModal from 'vue-js-modal'
 
@@ -38,7 +40,9 @@ Vue.use(ElementUI)
 // Vue.use(MdContent)
 // Vue.use(MdTabs)
 Vue.use(VueTouchRipple)
-// Vue.use(VueAwesomeSwiper)
+Vue.use(VueAwesomeSwiper)
+
+Vue.use(VueSocketio, 'http://localhost:3000')
 
 Vue.config.productionTip = false
 

@@ -17,7 +17,9 @@
               <div >
                 市场新流
               </div>
-              <a class="zm-promo-link" href="#">全部</a>
+              <div class="">
+                <a class="zm-promo-link" href="#">全部</a>
+              </div>
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
@@ -41,7 +43,9 @@
               <div >
                 活动新品
               </div>
-              <a class="zm-promo-link" href="#">全部</a>
+              <div class="">
+                <a class="zm-promo-link" href="#">全部</a>
+              </div>
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
@@ -65,7 +69,9 @@
               <div >
                 热门搜索
               </div>
-              <a class="zm-promo-link" href="#">全部</a>
+              <div class="">
+                <a class="zm-promo-link" href="#">全部</a>
+              </div>
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
@@ -90,7 +96,9 @@
                 <div >
                   投资人常见问题
                 </div>
-                <a class="zm-promo-link" href="#">全部</a>
+                <div class="">
+                  <a class="zm-promo-link" href="#">全部</a>
+                </div>
               </div>
               <div v-for="(item, index) in 4" :key="index" style="display:flex; justify-content:space-between; padding:5px 0;">
                   <a class="zm-invest-question-title" href="#">如何在线学习</a>

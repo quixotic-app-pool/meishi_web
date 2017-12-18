@@ -69,7 +69,7 @@ export default {
   padding: 0 10%;
   box-sizing: border-box;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding-top: 4px;
 }
