@@ -1,10 +1,11 @@
 <template>
   <div id="app">
       <header-component0 v-if = "model.viewport === 0"/>
-      <header-component v-if = "model.viewport === 1"/>
+      <header-component v-else/>
       <div style="width:100%; height: 52px;"></div>
       <router-view/>
-      <!-- <footer-component0 /> -->
+      <footer-component0 v-if = "model.viewport === 0"/>
+      <footer-component v-else/>
   </div>
 </template>
 

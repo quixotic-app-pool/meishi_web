@@ -15,25 +15,25 @@
           <div class="zm-promo-one">
             <div class="zm-promo-title1">
               <div >
-                市场新流
+                本周流行菜谱
               </div>
               <div class="">
-                <a class="zm-promo-link" href="#">全部</a>
+                <router-link to="/one/2" class="zm-promo-link">
+                  全部
+                </router-link>
               </div>
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
                 <el-col :span="8" v-for="(o, index) in 3" :key="o" :offset="index > 0 ? 2 : 0">
-                  <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
-                    <img src="https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg" class="image">
-                    <div style="padding: 14px;">
-                      <span>Yummy hamburger</span>
-                      <div class="bottom clearfix">
-                        <time class="time">2017-12-22</time>
-                        <el-button type="text" class="button">Operating button</el-button>
+                  <router-link to="/item/323" class="zm-promo-link">
+                    <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
+                      <img src="https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg" class="image">
+                      <div style="padding: 14px;">
+                        <span>Yummy hamburger</span>
                       </div>
-                    </div>
-                  </el-card>
+                    </el-card>
+                  </router-link>
                 </el-col>
               </el-row>
             </div>
@@ -41,25 +41,25 @@
           <div class="zm-promo-one" style="margin-top: 20px;">
             <div class="zm-promo-title1">
               <div >
-                活动新品
+                活动折扣
               </div>
               <div class="">
-                <a class="zm-promo-link" href="#">全部</a>
+                <router-link to="/one/2" class="zm-promo-link">
+                  全部
+                </router-link>
               </div>
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
                 <el-col :span="8" v-for="(o, index) in 3" :key="o" :offset="index > 0 ? 2 : 0">
-                  <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
-                    <img src="http://cphualientour.weebly.com/uploads/4/5/8/0/45800523/3058957_orig.jpg" class="image">
-                    <div style="padding: 14px;">
-                      <span>Yummy hamburger</span>
-                      <div class="bottom clearfix">
-                        <time class="time">2017-12-22</time>
-                        <el-button type="text" class="button">Operating button</el-button>
+                  <router-link to="/item/323" class="zm-promo-link">
+                    <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
+                      <img src="https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg" class="image">
+                      <div style="padding: 14px;">
+                        <span>Yummy hamburger</span>
                       </div>
-                    </div>
-                  </el-card>
+                    </el-card>
+                  </router-link>
                 </el-col>
               </el-row>
             </div>
@@ -67,62 +67,31 @@
           <div class="zm-promo-one" style="margin-top: 20px;">
             <div class="zm-promo-title1">
               <div >
-                热门搜索
+                最新上架
               </div>
               <div class="">
-                <a class="zm-promo-link" href="#">全部</a>
+                <router-link to="/one/2" class="zm-promo-link">
+                  全部
+                </router-link>
               </div>
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
                 <el-col :span="8" v-for="(o, index) in 3" :key="o" :offset="index > 0 ? 2 : 0">
-                  <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
-                    <img src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg" class="image">
-                    <div style="padding: 14px;">
-                      <span>Yummy hamburger</span>
-                      <div class="bottom clearfix">
-                        <time class="time">2017-12-22</time>
-                        <el-button type="text" class="button">Operating button</el-button>
+                  <router-link to="/item/323" class="zm-promo-link">
+                    <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
+                      <img src="https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg" class="image">
+                      <div style="padding: 14px;">
+                        <span>Yummy hamburger</span>
                       </div>
-                    </div>
-                  </el-card>
+                    </el-card>
+                  </router-link>
                 </el-col>
               </el-row>
-            </div>
-          </div>
-          <div class="zm-promo-one" style="margin-top: 20px;">
-            <div style="display:flex; flex-direction: column;">
-              <div class="zm-promo-title1">
-                <div >
-                  投资人常见问题
-                </div>
-                <div class="">
-                  <a class="zm-promo-link" href="#">全部</a>
-                </div>
-              </div>
-              <div v-for="(item, index) in 4" :key="index" style="display:flex; justify-content:space-between; padding:5px 0;">
-                  <a class="zm-invest-question-title" href="#">如何在线学习</a>
-                  <div style="color:#909090; font-size:12px;">
-                    5人参与
-                  </div>
-              </div>
             </div>
           </div>
         </div>
         <div class="zm-promo-aside">
-          <div class="zm-promo-aside-inner">
-            <div style="padding: 30px 0; display: flex; flex-direction:column; justify-content:center; align-items:center;">
-              <img style="height: 60px; width: 60px; border-radius:30px;" src="../einstain.jpeg" alt="">
-              <div style="padding-top: 20px; font-size: 18px;">
-                 我是偶像爱因斯坦
-              </div>
-              <div style="padding: 0 0 20px 0; font-size: 12px;">
-                <a class="zm-main-link" href="#">10 收藏</a> |
-                <a class="zm-main-link"  href="#">5 配方</a>
-              </div>
-              <el-button type="danger" name="button">继续学习</el-button>
-            </div>
-          </div>
             <div class="zm-promo-aside-inner">
                 <div style="display:flex; align-items:center;">
                   <el-popover ref="popover1" placement="right" title="扫描下方二维码，联系客服" width="200" trigger="hover">
@@ -151,16 +120,18 @@
             </div>
             <div class="zm-promo-aside-inner" v-sticky= '{ zIndex: 1, stickyTop: 70}'>
               <div class="">
-                <div style="margin-bottom: 16px; padding: 10px 0 10px 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
-                    热点项目
+                <div style="color: #c0ae7d; margin-bottom: 16px; padding: 10px 0 10px 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
+                    热门项目
                 </div>
-                <div style="cursor: pointer;padding: 0 5px 5px 5px; display:flex; flex-direction: row;" v-for="(item, index) in 5" :key='item'>
+                <div  v-for="(item, index) in 5" :key='item'>
+                  <router-link to="/item/323" style="text-decoration: none; color:black; padding: 0 5px 5px 5px; display:flex; flex-direction: row;">
                     <img style="filter: blur(1px); height: 70px; width: 50%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg" alt="">
                     <div style="display: flex; flex-direction: column; justify-content:flex-start;">
                       <div style="padding-left: 3px; font-weight:bold; text-align: left;">
                         超级好吃无敌蛋糕
                       </div>
                     </div>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -172,6 +143,12 @@
 import VueSticky from '../../components/StickyIndex.js'
 export default {
   name: 'MainPage',
+  props: {
+    data: {
+      type: Object,
+      default: {}
+    }
+  },
   data () {
     return {
       oneFirstPlace: 0,
@@ -274,7 +251,6 @@ export default {
 }
 .zm-swiper-container-inner {
   width: 100%;
-  padding: 2px;
   background-color: white;
   -webkit-box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
   box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);

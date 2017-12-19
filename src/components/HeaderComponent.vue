@@ -1,31 +1,12 @@
 <template>
   <div class="zm-header">
     <div class="zm-header-inner">
-      <div class="zm-logo pointer" >
+      <router-link to="/" class="zm-logo" style="text-decoration: none">
         青菜帮
-      </div>
-      <div class="zm-header-options">
-        <div class="pointer">
-          首页
-        </div>
-        <div class="pointer">
-          潮流新品
-        </div>
-        <div class="pointer">
-          最新全系列
-        </div>
-      </div>
+      </router-link>
       <div class="zm-header-search">
         <el-autocomplete class="zm-search-inner" v-model="state" :fetch-suggestions="querySearchAsync" placeholder="搜索创业秘方..." @select="handleSelect"></el-autocomplete>
         <el-button type="primary">搜索</el-button>
-      </div>
-      <div class="zm-header-join">
-        <div class="pointer">
-          登录
-        </div>
-        <div class="pointer">
-          注册
-        </div>
       </div>
     </div>
   </div>
@@ -82,16 +63,16 @@ export default {
   justify-content: space-around;
 }
 .zm-header-options div {
-  padding: 0 10px;
+  padding: 0 20px;
 }
 .zm-header-search {
-  width: 400px;
   display: flex;
   justify-content: space-around;
 }
 .zm-search-inner {
   width: 300px;
   font-size: 18px;
+  margin-right: 10px
 }
 .zm-header-join {
   display: flex;

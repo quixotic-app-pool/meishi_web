@@ -1,8 +1,10 @@
 <template>
   <div class="zm-header0">
     <div class="zm-header0-inner">
-      <div class="zm-logo0">
-        青菜帮
+      <div>
+        <router-link to="/" class="zm-logo0" style="text-decoration: none">
+          青菜帮
+        </router-link>
       </div>
       <div class="">
         <el-button class="zm-header0-btn1" type="default" name="button">用APP打开</el-button>

@@ -5,7 +5,7 @@
  * @Project: one_server
  * @Filename: index.js
  * @Last modified by:   mymac
- * @Last modified time: 2017-12-19T10:23:16+08:00
+ * @Last modified time: 2017-12-19T17:53:47+08:00
  */
 
 import Vue from 'vue'
@@ -31,7 +31,7 @@ export default new Router({
       component: ChatPage
     },
     {
-      path: '/main',
+      path: '/',
       name: 'MainPage',
       component: MainPage
     },
@@ -51,7 +51,7 @@ export default new Router({
       component: MinePage
     },
     {
-      path: '/one',
+      path: '/one/:topic',
       name: 'OneCategoryPage',
       component: OneCategoryPage
     },
@@ -61,7 +61,7 @@ export default new Router({
       component: AllCategoryPage
     },
     {
-      path: '/',
+      path: '/item/:recipe_id',
       name: 'ItemPage',
       component: ItemPage
     },

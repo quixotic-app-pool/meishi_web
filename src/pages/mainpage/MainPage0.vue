@@ -8,43 +8,47 @@
 
       <div class="zm-main0-category-container">
         <el-row :gutter="5">
-          <el-col :span="8" v-for="(item, index) in 6" :key="index">
-            <div style="padding-bottom:16px;">
-              <img style="width: 100%; height: auto; object-fit: cover;" src="../img3.jpg" alt="">
-              <div>
-                快手菜
+          <el-col class="pointer" :span="8" v-for="(item, index) in 6" :key="index">
+            <router-link to="/item/323" style="color: black; text-decoration: none;">
+              <div style="padding-bottom:16px;">
+                <img style="width: 100%; height: auto; object-fit: cover;" src="../img3.jpg" alt="">
+                <div>
+                  快手菜
+                </div>
               </div>
-            </div>
+            </router-link>
           </el-col>
         </el-row>
         <div style="background-color:#f5f6f5; height:40px; display:flex; align-items:center; justify-content:center;">
-          <div class="">
-            全部项目分类
-          </div>
+          <router-link to="/one/2" style="color: black; text-decoration: none;">
+            本周流行项目
+          </router-link>
         </div>
       </div>
 
       <div class="zm-main0-swiper-container">
         <div style="display:flex; justify-content: space-between;">
           <div style="font-weight: 700;">
-            市场流行
+            活动折扣
           </div>
-          <div style="color: #fa5555">
-            打开APP看排行榜
+          <div style="color: #fa5555" class="pointer">
+            打开APP更多优惠
           </div>
         </div>
         <div class="swiper-inner">
           <swiper :options="swiperOption">
             <swiper-slide style="display:flex; flex-direction: column; justify-content:space-between; align-items: center;" v-for="(item, index) in 6" :key="index">
-              <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
-              <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
-                <div class="">
-                  编辑选新
+              <router-link to="/item/323" style="color: black; text-decoration: none;">
+                <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
+                <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
+                  <div class="">
+                    编辑选新
+                  </div>
+                  <div style="font-size:12px; color: #909090">
+                    新上架项目，欢迎选购
+                  </div>
                 </div>
-                <div style="font-size:12px; color: #909090">
-                  新上架项目，欢迎选购
-                </div>
-              </div>
+              </router-link>
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
           </swiper>
@@ -52,42 +56,43 @@
       </div>
 
       <div class="zm-main0-list">
-        <div class="zm-main0-list-item" v-for="(item, index) in 6" :key="index">
-            <div style="flex: 1;">
+        <div class=" pointer" v-for="(item, index) in 6" :key="index">
+          <router-link to="/item/323" class="zm-main0-list-item" style="color: black; text-decoration: none;">
+            <div style="flex: 2;">
                 <img style="width:100%" src="../img3.jpg" alt="">
             </div>
             <div style="box-sizing:border-box;padding: 0 10px; display:flex; flex-direction: column; justify-content:center; align-items: flex-start; flex: 1;">
               <div class="">
                 黑钻吐司
               </div>
-              <div style="padding-top: 10px; font-size: 12px; color: #909090;">
-                评分 8.9 290 人做过
-              </div>
             </div>
+          </router-link>
         </div>
       </div>
 
       <div class="zm-main0-swiper-container">
         <div style="display:flex; justify-content: space-between;">
           <div style="font-weight: 700;">
-            创业者动态
+            热门项目
           </div>
-          <div style="color: #fa5555">
-            打开APP看排行榜
+          <div style="color: #fa5555" class="pointer">
+            打开APP更多热门
           </div>
         </div>
         <div class="swiper-inner">
           <swiper :options="swiperOption">
             <swiper-slide style="display:flex; flex-direction: column; justify-content:space-between; align-items: center;" v-for="(item, index) in 6" :key="index">
-              <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
-              <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
-                <div class="">
-                  编辑选新
+              <router-link to="/item/323" style="color: black; text-decoration: none;">
+                <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
+                <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
+                  <div class="">
+                    编辑选新
+                  </div>
+                  <div style="font-size:12px; color: #909090">
+                    新上架项目，欢迎选购
+                  </div>
                 </div>
-                <div style="font-size:12px; color: #909090">
-                  新上架项目，欢迎选购
-                </div>
-              </div>
+              </router-link>
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
           </swiper>
@@ -95,42 +100,43 @@
       </div>
 
       <div class="zm-main0-list">
-        <div class="zm-main0-list-item" v-for="(item, index) in 6" :key="index">
-            <div style="flex: 1;">
-                <img style="width:100%" src="../img3.jpg" alt="">
-            </div>
-            <div style="box-sizing:border-box;padding: 0 10px; display:flex; flex-direction: column; justify-content:center; align-items: flex-start; flex: 1;">
-              <div class="">
-                黑钻吐司
+        <div class="pointer" v-for="(item, index) in 6" :key="index">
+            <router-link to="/item/323" class="zm-main0-list-item" style="color: black; text-decoration: none;">
+              <div style="flex: 2;">
+                  <img style="width:100%" src="../img3.jpg" alt="">
               </div>
-              <div style="padding-top: 10px; font-size: 12px; color: #909090;">
-                评分 8.9 290 人做过
+              <div style="box-sizing:border-box;padding: 0 10px; display:flex; flex-direction: column; justify-content:center; align-items: flex-start; flex: 1;">
+                <div class="">
+                  黑钻吐司
+                </div>
               </div>
-            </div>
+            </router-link>
         </div>
       </div>
 
       <div class="zm-main0-swiper-container">
         <div style="display:flex; justify-content: space-between;">
           <div style="font-weight: 700;">
-            新进项目
+            最新上架
           </div>
-          <div style="color: #fa5555">
-            打开APP看排行榜
+          <div style="color: #fa5555" class="pointer">
+            打开APP更多惊喜
           </div>
         </div>
         <div class="swiper-inner">
           <swiper :options="swiperOption">
             <swiper-slide style="display:flex; flex-direction: column; justify-content:space-between; align-items: center;" v-for="(item, index) in 6" :key="index">
-              <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
-              <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
-                <div class="">
-                  编辑选新
+              <router-link to="/item/323" style="color: black; text-decoration: none;">
+                <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
+                <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
+                  <div class="">
+                    编辑选新
+                  </div>
+                  <div style="font-size:12px; color: #909090">
+                    新上架项目，欢迎选购
+                  </div>
                 </div>
-                <div style="font-size:12px; color: #909090">
-                  新上架项目，欢迎选购
-                </div>
-              </div>
+               </router-link>
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
           </swiper>
@@ -138,18 +144,17 @@
       </div>
 
       <div class="zm-main0-list">
-        <div class="zm-main0-list-item" v-for="(item, index) in 6" :key="index">
-            <div style="flex: 1;">
+        <div class="pointer" v-for="(item, index) in 6" :key="index">
+          <router-link to="/item/323" class="zm-main0-list-item" style="color: black; text-decoration: none;">
+            <div style="flex: 2;">
                 <img style="width:100%" src="../img3.jpg" alt="">
             </div>
             <div style="box-sizing:border-box;padding: 0 10px; display:flex; flex-direction: column; justify-content:center; align-items: flex-start; flex: 1;">
               <div class="">
                 黑钻吐司
               </div>
-              <div style="padding-top: 10px; font-size: 12px; color: #909090;">
-                评分 8.9 290 人做过
-              </div>
             </div>
+          </router-link>
         </div>
       </div>
 
@@ -161,6 +166,12 @@
 <script>
 export default {
   name: 'MainPage0',
+  props: {
+    data: {
+      type: Object,
+      default: {}
+    }
+  },
   data () {
     return {
       state: '',
@@ -186,6 +197,16 @@ export default {
 </script>
 
 <style scoped>
+.zm-promo-link {
+  text-decoration: none;
+  color: #dd3915;
+  font-size: 14px;
+  margin-left: 20px;
+  font-weight: normal;
+}
+.pointer {
+  cursor: pointer;
+}
 .zm-main0-list-item {
   display: flex;
   flex-direction: row;

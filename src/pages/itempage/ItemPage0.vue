@@ -8,9 +8,6 @@
         <div style="font-size:30px; font-weight: 700;">
           圣诞烤火鸡
         </div>
-        <div style="font-size:12px; color: #909090;">
-          7.8 综合评分 318 人做过这道菜
-        </div>
       </div>
 
       <div class="zm-item0-content">
@@ -19,14 +16,6 @@
           ok！书归正传！
           这个方子肯定不是最正宗的，但是真的很好吃很入味！至少受到了众吃货的一致好评。
           网上搜了无数的攻略和方子，但绝大多数看起来都不靠谱，看看用料和配比就觉得不好吃。最后结合了几个看起来应该还不错的方子外加Jamie Oliver的配方，于是就成了眼前的这道绝世好吃大火鸡！
-        </div>
-        <div class="zm-item0-author">
-          <div class="">
-            作者： 胖咚咚
-          </div>
-          <div class="">
-            <img style="width: 50px; height: 50px; border-radius: 25px;" src="../einstain.jpeg" alt="">
-          </div>
         </div>
       </div>
 
@@ -81,47 +70,47 @@
       </div>
 
 
-
-      <div class="zm-main0-list">
-        <div class="zm-main0-list-item" v-for="(item, index) in 6" :key="index">
-            <div style="flex: 1;">
-                <img style="width:100%" src="../img3.jpg" alt="">
-            </div>
-            <div style="box-sizing:border-box;padding: 0 10px; display:flex; flex-direction: column; justify-content:center; align-items: flex-start; flex: 1;">
-              <div class="">
-                黑钻吐司
-              </div>
-              <div style="padding-top: 10px; font-size: 12px; color: #909090;">
-                评分 8.9 290 人做过
-              </div>
-            </div>
-        </div>
-      </div>
-
       <div class="zm-main0-swiper-container">
-        <div style="display:flex; justify-content: space-between;">
-          <div style="font-weight: 700;">
-            创业者动态
+        <div style="display:flex; justify-content: space-between;font-size: 20px;">
+          <div style="font-weight: 700; ">
+            热门项目
           </div>
           <div style="color: #fa5555">
-            打开APP看排行榜
+            打开APP更多详情
           </div>
         </div>
         <div class="swiper-inner">
           <swiper :options="swiperOption">
             <swiper-slide style="display:flex; flex-direction: column; justify-content:space-between; align-items: center;" v-for="(item, index) in 6" :key="index">
-              <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
-              <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
-                <div class="">
-                  编辑选新
+              <router-link to="/item/323" style="color: black; text-decoration: none;">
+                <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
+                <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
+                  <div class="">
+                    编辑选新
+                  </div>
+                  <div style="font-size:12px; color: #909090">
+                    新上架项目，欢迎选购
+                  </div>
                 </div>
-                <div style="font-size:12px; color: #909090">
-                  新上架项目，欢迎选购
-                </div>
-              </div>
+              </router-link>
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
           </swiper>
+        </div>
+      </div>
+
+      <div class="zm-main0-list">
+        <div style="cursor: pointer;" v-for="(item, index) in 6" :key="index">
+          <router-link to="/item/323" class="zm-main0-list-item" style="color: black; text-decoration: none;">
+            <div style="flex: 2;">
+                <img style="width:100%" src="../img3.jpg" alt="">
+            </div>
+            <div style="font-size:20px; box-sizing:border-box;padding: 0 10px; display:flex; flex-direction: column; justify-content:center; align-items: flex-start; flex: 1;">
+              <div class="">
+                黑钻吐司
+              </div>
+            </div>
+          </router-link>
         </div>
       </div>
 
@@ -206,6 +195,7 @@ export default {
 }
 .zm-item0-container {
   width: 100%;
+  padding-top: 10px;
 }
 .swiper-inner {
     width: 100%;

@@ -5,7 +5,7 @@
         <div class="zm-item-breadcrumb">
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>焖饭</el-breadcrumb-item>
+            <el-breadcrumb-item>本周流行</el-breadcrumb-item>
             <el-breadcrumb-item>铸铁锅版焖饭--黑胡椒牛肉焖饭 </el-breadcrumb-item>
           </el-breadcrumb>
         </div>
@@ -15,25 +15,8 @@
         <div class="">
           <img style="width: 100%;" src="../itemAssets/1.jpg" alt="">
         </div>
-        <div style="display:flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f3f3f3;">
-          <div style="display: flex; align-items: center  ">
-            <div style="color: #dd3915; font-size: 18px;">
-              11
-            </div>
-            <div style="font-size: 14px; color: #909090;">
-              人学过这道菜
-            </div>
-          </div>
-          <div>
-             <el-button @click="addFavorite()" style="font-size: 18px;" type="danger" round>收藏</el-button>
-          </div>
-        </div>
-        <div style="display: flex; align-items: center; padding: 10px 0;">
-          <img style="width: 70px; height: 70px; border-radius: 35px;" src="../einstain.jpeg" alt="">
-          <div style="padding: 0 10px;">
-            爱新觉罗·爱因斯坦
-          </div>
-          <img style="width: 20px; height: 20px;" src="../chef-man.png" alt="">
+        <div style="display:flex; justify-content: flex-end; padding: 10px 0; border-bottom: 1px solid #f3f3f3;">
+           <el-button @click="addFavorite()" style="font-size: 18px;" type="danger" round>收藏</el-button>
         </div>
         <div style="text-align: left; margin: 30px 0 16px 0; font-size: 18px; line-height: 1.8;">
           小时候曾经吃过朋友家做的“新疆手抓饭”味道一直记忆犹新，
@@ -58,37 +41,34 @@
         </div>
       </div>
 
-      <div class="zm-item-right">
-        <div class="zm-item-weixin" style="">
-            <div class="">
-              <div style="display:flex; flex-direction:row; align-items:center;  padding: 10px 0 0 0; text-align: left; font-size: 20px;font-weight: 700;">
-                <img style="width: auto; height: 50px;" src="../weixin.jpeg" alt="">
-                <div class="">
-                  联系我们
-                </div>
+      <div class="zm-promo-aside" style="margin-top: 118px;" >
+          <div class="zm-promo-aside-inner">
+              <div style="display:flex; align-items:center;">
+                <el-popover ref="popover1" placement="right" title="扫描下方二维码，联系客服" width="200" trigger="hover">
+                  <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="../example_erweima.png" alt="">
+                </el-popover>
+                  <div v-popover:popover1 style="cursor:pointer; display:flex; flex-direction:row; align-items:center;  padding: 0 0 0 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
+                    <img style="width: auto; height: 50px;" src="../weixin.jpeg" alt="">
+                    <div class="">
+                      微信联系我们
+                    </div>
+                  </div>
               </div>
-              <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="../example_erweima.png" alt="">
-            </div>
-        </div>
-        <div style="padding-top:40px;">
-          <div class="zm-item-right-title">
-            铸铁锅版焖饭--黑胡椒牛肉焖饭所在分类
           </div>
-          <div class="zm-item-right-tag" v-for="(item, index) in ['焖饭', '焖', '饭']" :key="item">
-                {{item}}
+          <div class="zm-promo-aside-inner">
+              <div style="display:flex; align-items:center;">
+                <el-popover ref="popover1" placement="right" title="支持苹果和安卓手机" width="200" trigger="hover">
+                  <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="../example_erweima.png" alt="">
+                </el-popover>
+                  <div v-popover:popover1 style="cursor:pointer; display:flex; flex-direction:row; align-items:center;  padding: 0 0 0 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
+                    <img style="width: auto; height: 50px;" src="http://www.techreviewer.co.uk/wp-content/uploads/2017/02/apps.jpg" alt="">
+                    <div class="">
+                      下载我们的APP
+                    </div>
+                  </div>
+              </div>
           </div>
-        </div>
-        <div style="padding-top:40px; clear: both;">
-          <div class="zm-item-right-title" style="padding-bottom: 10px;">
-            被大家加入到以下套餐
-          </div>
-          <div v-for="(item, index) in 3" :key="item" style="display: flex; flex-direction: column; justify-content: center;border: 1px solid #f3f3f3; margin-bottom: 20px;">
-                <img style="width: 100%; object-fit: cover; height: 100px;" src="../img1.jpg" alt="">
-                <div style="padding: 14px 10px;">
-                  珐琅铸铁锅的日常
-                </div>
-          </div>
-        </div>
+
       </div>
     </div>
 
@@ -115,19 +95,18 @@
     </div>
     <div class="zm-bottom-promo">
         <div class="zm-item-right-title" style="font-size:24px;padding: 20px 0 10px 0;">
-          市场流行项目强力推荐
+          热门项目
         </div>
         <el-row :gutter="20" >
           <el-col :span="6" v-for="(o, index) in 4" :key="o">
-            <el-card :body-style="{ padding: '0px' }">
-              <img style="height: 120px; width: 100%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg">
-              <div style="padding: 10px 2px;">
-                <span>烤箱菜走起--蒜蓉烤茄子</span>
-                <div style="font-size:12px; color: #a5a7a6">
-                   123人参与项目
+            <router-link to="/item/323" style="color: black; text-decoration: none;">
+              <el-card :body-style="{ padding: '0px' }">
+                <img style="height: 120px; width: 100%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg">
+                <div style="padding: 10px 2px;">
+                  <span>烤箱菜走起--蒜蓉烤茄子</span>
                 </div>
-              </div>
-            </el-card>
+              </el-card>
+            </router-link>
           </el-col>
         </el-row>
       </div>
@@ -221,5 +200,16 @@ export default {
   font-size: 34px;
   font-weight: 700;
   float: left;
+}
+.zm-promo-aside {
+  width: 30%;
+}
+.zm-promo-aside-inner {
+  width: 100%;
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
+  box-shadow: 0 1px 3px 0 rgba(0,34,77,.1);
+  background-color: white;
+  border-radius: 2px;
+  margin-bottom: 10px;
 }
 </style>

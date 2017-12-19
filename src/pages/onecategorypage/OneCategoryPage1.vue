@@ -5,7 +5,7 @@
         <div class="zm-item-breadcrumb">
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>焖饭</el-breadcrumb-item>
+            <el-breadcrumb-item>本周流行</el-breadcrumb-item>
             <el-breadcrumb-item>铸铁锅版焖饭--黑胡椒牛肉焖饭 </el-breadcrumb-item>
           </el-breadcrumb>
         </div>
@@ -13,26 +13,12 @@
       <div class="zm-one-box">
         <div class="zm-one-left">
           <div class="zm-one-suggestion">
-              <a href="#" v-for="(item, index) in ['全部分类', '市场热门', '最新上架', '折扣项目']" :key="index">{{item}}</a>
-          </div>
-          <div class="zm-one-category">
-            <el-collapse v-model="activeNames" @change="handleChange">
-              <div  v-for="(item, index) in ['烘焙', '烧烤', '西点', '茶点']" :key="index">
-                <el-collapse-item class="zm-one-category-unit" :title="item" name="1"  :name="index">
-                  <a href="#" v-for="(item2, index2) in 3" :key="index2">蒜泥龙虾</a>
-                </el-collapse-item>
-              </div>
-            </el-collapse>
+              <a href="#" v-for="(item, index) in ['本周流行', '活动折扣', '热门项目', '最新上架']" :key="index">{{item}}</a>
           </div>
         </div>
         <div class="zm-one-mid">
           <div class="zm-one-mid-title">
-              烘焙
-          </div>
-          <div class="zm-one-mid-filter">
-              <a href="#">最受欢迎</a> |
-              <a href="#" style="color: #dd3915">最近流行</a> |
-              <a href="#" style="color: #dd3915">学习人数</a>
+              本周流行
           </div>
           <div class="zm-one-mid-list">
               <div class="zm-one-mid-list-item" v-for="(item, index) in 10" :key="index">
@@ -43,27 +29,11 @@
                         <span style="color:white; background-color:rgb(254,197,10); font-size:12px; padding:2px 3px;">独家</span>
                         <span style="opacity:0.8; background-color:rgb(240, 242, 247); font-size:12px; padding:2px 3px;">步骤图</span>
                     </div>
-                    <div style="color:#9c6730; font-size:14px;">
-                       面粉、酵母、白糖、水、面粉
-                    </div>
-                    <div style="display:flex; align-items: center;">
-                      <div style="color:#909090; font-size:13px;">
-                        综合评分
-                      </div>
-                      <div style="padding-left:5px; color:#72a46d; font-size:13px; line-height: 16px;">
-                        9.0
-                      </div>
-                    </div>
-                    <div style="display:flex; align-items: center;">
-                      <span style="color:#909090; font-size:14px;">256人收藏</span>
-                      <span>---</span>
-                      <span style="color:#909090; font-size:14px;">56人学习</span>
-                    </div>
                   </div>
               </div>
           </div>
           <div class="zm-one-mid-pagination">
-            <el-pagination layout="prev, pager, next" :total="50">
+            <el-pagination @current-change="changePage($event)" layout="prev, pager, next" :total="50">
             </el-pagination>
           </div>
         </div>
@@ -97,7 +67,7 @@
           <div class="zm-promo-aside-inner">
             <div class="">
               <div style="margin-bottom: 16px; padding: 10px 0 10px 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
-                  热点项目
+                  热门项目
               </div>
               <div style="cursor: pointer;padding: 0 5px 5px 5px; display:flex; flex-direction: row;" v-for="(item, index) in 5" :key='item'>
                   <img style="filter: blur(1px); height: 70px; width: 50%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg" alt="">
@@ -117,14 +87,26 @@
 
 <script>
 export default {
-  name: 'OneCategoryPage',
+  name: 'OneCategoryPage1',
+  props: {
+    data: {
+      type: Object,
+       default: {}
+    }
+  },
   data () {
     return {
-      activeNames: ''
+      activeNames: '',
+      page: 0
     }
   },
   methods: {
-    handleChange () {
+    changePage (page) {
+      // TODO: because we need to calculate the page number of all, we might need to get all data one time
+      // and we just update the data array to update the UI
+      // this.page = ?
+      // we find topic & page number from props.data
+      this.$root.$emit("listData", data.topic, data.page + 1)
     }
   }
 }
