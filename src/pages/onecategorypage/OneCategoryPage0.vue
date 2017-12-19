@@ -21,7 +21,7 @@
 
       <div style="width:100%;">
         <div style="width:100%;" v-for="(item, index) in 10" :key="index">
-          <img style="width: 100%; height: 200px; object-fit: cover;" src="./img2.jpeg" alt="">
+          <img style="width: 100%; height: 200px; object-fit: cover;" src="../img2.jpeg" alt="">
           <div style="height:100px; display:flex; justify-content:flex-start;  align-items:center;">
             <div style="width:100%;display:flex; flex-direction:column; align-items:flex-start; justify-content:center">
               <div style="font-size: 20px;">
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="">
-              <img style="height: 50px; width: 50px; border-radius: 25px;" src="./einstain.jpeg" alt="">
+              <img style="height: 50px; width: 50px; border-radius: 25px;" src="../einstain.jpeg" alt="">
             </div>
           </div>
         </div>

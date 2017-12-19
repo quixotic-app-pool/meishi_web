@@ -10,7 +10,7 @@
         <el-row :gutter="5">
           <el-col :span="8" v-for="(item, index) in 6" :key="index">
             <div style="padding-bottom:16px;">
-              <img style="width: 100%; height: auto; object-fit: cover;" src="./img3.jpg" alt="">
+              <img style="width: 100%; height: auto; object-fit: cover;" src="../img3.jpg" alt="">
               <div>
                 快手菜
               </div>
@@ -36,7 +36,7 @@
         <div class="swiper-inner">
           <swiper :options="swiperOption">
             <swiper-slide style="display:flex; flex-direction: column; justify-content:space-between; align-items: center;" v-for="(item, index) in 6" :key="index">
-              <img style="width:100%; height:200px; object-fit: cover;" src="./img2.jpeg" alt="">
+              <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
               <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
                 <div class="">
                   编辑选新
@@ -54,7 +54,7 @@
       <div class="zm-main0-list">
         <div class="zm-main0-list-item" v-for="(item, index) in 6" :key="index">
             <div style="flex: 1;">
-                <img style="width:100%" src="./img3.jpg" alt="">
+                <img style="width:100%" src="../img3.jpg" alt="">
             </div>
             <div style="box-sizing:border-box;padding: 0 10px; display:flex; flex-direction: column; justify-content:center; align-items: flex-start; flex: 1;">
               <div class="">
@@ -79,7 +79,7 @@
         <div class="swiper-inner">
           <swiper :options="swiperOption">
             <swiper-slide style="display:flex; flex-direction: column; justify-content:space-between; align-items: center;" v-for="(item, index) in 6" :key="index">
-              <img style="width:100%; height:200px; object-fit: cover;" src="./img2.jpeg" alt="">
+              <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
               <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
                 <div class="">
                   编辑选新
@@ -97,7 +97,7 @@
       <div class="zm-main0-list">
         <div class="zm-main0-list-item" v-for="(item, index) in 6" :key="index">
             <div style="flex: 1;">
-                <img style="width:100%" src="./img3.jpg" alt="">
+                <img style="width:100%" src="../img3.jpg" alt="">
             </div>
             <div style="box-sizing:border-box;padding: 0 10px; display:flex; flex-direction: column; justify-content:center; align-items: flex-start; flex: 1;">
               <div class="">
@@ -122,7 +122,7 @@
         <div class="swiper-inner">
           <swiper :options="swiperOption">
             <swiper-slide style="display:flex; flex-direction: column; justify-content:space-between; align-items: center;" v-for="(item, index) in 6" :key="index">
-              <img style="width:100%; height:200px; object-fit: cover;" src="./img2.jpeg" alt="">
+              <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
               <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
                 <div class="">
                   编辑选新
@@ -140,7 +140,7 @@
       <div class="zm-main0-list">
         <div class="zm-main0-list-item" v-for="(item, index) in 6" :key="index">
             <div style="flex: 1;">
-                <img style="width:100%" src="./img3.jpg" alt="">
+                <img style="width:100%" src="../img3.jpg" alt="">
             </div>
             <div style="box-sizing:border-box;padding: 0 10px; display:flex; flex-direction: column; justify-content:center; align-items: flex-start; flex: 1;">
               <div class="">
@@ -152,7 +152,7 @@
             </div>
         </div>
       </div>
-      
+
 
     </div>
   </div>

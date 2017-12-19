@@ -5,7 +5,7 @@
  * @Project: one_server
  * @Filename: main.js
  * @Last modified by:   mymac
- * @Last modified time: 2017-12-17T13:31:54+08:00
+ * @Last modified time: 2017-12-19T10:00:55+08:00
  */
 
 // The Vue build version to load with the `import` command
@@ -13,6 +13,14 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+
+
+window.cnfg = {}
+window.cnfg.model = {}
+window.cnfg.methods = require('./module/methods')
+window.addEventListener('resize', window.cnfg.methods.debounce(window.cnfg.methods.resize, 50));
+
+cnfg.methods.resize();
 
 // import VueProgressiveImage from 'vue-progressive-image'
 // import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'

@@ -13,7 +13,7 @@
           铸铁锅版焖饭--黑胡椒牛肉焖饭
         </div>
         <div class="">
-          <img style="width: 100%;" src="./itemAssets/1.jpg" alt="">
+          <img style="width: 100%;" src="../itemAssets/1.jpg" alt="">
         </div>
         <div style="display:flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f3f3f3;">
           <div style="display: flex; align-items: center  ">
@@ -25,15 +25,15 @@
             </div>
           </div>
           <div>
-             <el-button style="font-size: 18px;" type="danger" round>收藏</el-button>
+             <el-button @click="addFavorite()" style="font-size: 18px;" type="danger" round>收藏</el-button>
           </div>
         </div>
         <div style="display: flex; align-items: center; padding: 10px 0;">
-          <img style="width: 70px; height: 70px; border-radius: 35px;" src="./einstain.jpeg" alt="">
+          <img style="width: 70px; height: 70px; border-radius: 35px;" src="../einstain.jpeg" alt="">
           <div style="padding: 0 10px;">
             爱新觉罗·爱因斯坦
           </div>
-          <img style="width: 20px; height: 20px;" src="./chef-man.png" alt="">
+          <img style="width: 20px; height: 20px;" src="../chef-man.png" alt="">
         </div>
         <div style="text-align: left; margin: 30px 0 16px 0; font-size: 18px; line-height: 1.8;">
           小时候曾经吃过朋友家做的“新疆手抓饭”味道一直记忆犹新，
@@ -62,12 +62,12 @@
         <div class="zm-item-weixin" style="">
             <div class="">
               <div style="display:flex; flex-direction:row; align-items:center;  padding: 10px 0 0 0; text-align: left; font-size: 20px;font-weight: 700;">
-                <img style="width: auto; height: 50px;" src="./weixin.jpeg" alt="">
+                <img style="width: auto; height: 50px;" src="../weixin.jpeg" alt="">
                 <div class="">
                   联系我们
                 </div>
               </div>
-              <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="./example_erweima.png" alt="">
+              <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="../example_erweima.png" alt="">
             </div>
         </div>
         <div style="padding-top:40px;">
@@ -83,7 +83,7 @@
             被大家加入到以下套餐
           </div>
           <div v-for="(item, index) in 3" :key="item" style="display: flex; flex-direction: column; justify-content: center;border: 1px solid #f3f3f3; margin-bottom: 20px;">
-                <img style="width: 100%; object-fit: cover; height: 100px;" src="./img1.jpg" alt="">
+                <img style="width: 100%; object-fit: cover; height: 100px;" src="../img1.jpg" alt="">
                 <div style="padding: 14px 10px;">
                   珐琅铸铁锅的日常
                 </div>
@@ -135,9 +135,9 @@
   </div>
 </template>
 <script>
-import VueSticky from '../components/StickyIndex.js'
+import VueSticky from '../../components/StickyIndex.js'
 export default {
-  name: 'ItemPage',
+  name: 'ItemPage1',
   data () {
     return {
       ingredients: [{name: '牛肉', value: '半斤'}, {name: '胡萝卜', value: '1根'}, {name: '洋葱', value: '1个'}, {name: '青豆', value: '适量'}, {name: '大米', value: '2量杯'}, {name: '水', value: '2.5量杯'},
@@ -151,6 +151,11 @@ export default {
   },
   directives: {
     'sticky': VueSticky
+  },
+  methods: {
+    addFavorite () {
+      this.$root.$emit('openDialog', '下载我们的APP可以永久收藏，还有更多实用功能帮您了解我们的热门项目！')
+    }
   }
 }
 </script>

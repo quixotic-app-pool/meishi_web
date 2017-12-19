@@ -1,7 +1,7 @@
 <template>
   <div class="zm-item0-container">
     <div class="zm-item0-img">
-      <img style="width: 100%; height: auto; object-fit: cover;" src="./img2.jpeg" alt="">
+      <img style="width: 100%; height: auto; object-fit: cover;" src="../img2.jpeg" alt="">
     </div>
     <div class="zm-item0-inner">
       <div class="zm-item0-title">
@@ -25,7 +25,7 @@
             作者： 胖咚咚
           </div>
           <div class="">
-            <img style="width: 50px; height: 50px; border-radius: 25px;" src="./einstain.jpeg" alt="">
+            <img style="width: 50px; height: 50px; border-radius: 25px;" src="../einstain.jpeg" alt="">
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@
             步骤 {{index + 1}}
           </div>
           <div class="">
-            <img style="width:100%;" src="./img4.jpg" alt="">
+            <img style="width:100%;" src="../img4.jpg" alt="">
           </div>
           <div style="line-height: 24px;text-align: justify; padding-top: 5px;">
             给火鸡暴菊！找一个啤酒瓶或者红酒瓶，把火鸡竖起来从菊花处插下去……囧，这样火鸡就竖起来了，也可以控掉腹腔内多余的水份。等待约三个小时；
@@ -85,7 +85,7 @@
       <div class="zm-main0-list">
         <div class="zm-main0-list-item" v-for="(item, index) in 6" :key="index">
             <div style="flex: 1;">
-                <img style="width:100%" src="./img3.jpg" alt="">
+                <img style="width:100%" src="../img3.jpg" alt="">
             </div>
             <div style="box-sizing:border-box;padding: 0 10px; display:flex; flex-direction: column; justify-content:center; align-items: flex-start; flex: 1;">
               <div class="">
@@ -110,7 +110,7 @@
         <div class="swiper-inner">
           <swiper :options="swiperOption">
             <swiper-slide style="display:flex; flex-direction: column; justify-content:space-between; align-items: center;" v-for="(item, index) in 6" :key="index">
-              <img style="width:100%; height:200px; object-fit: cover;" src="./img2.jpeg" alt="">
+              <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
               <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
                 <div class="">
                   编辑选新

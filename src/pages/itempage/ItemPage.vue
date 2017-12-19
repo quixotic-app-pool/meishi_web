@@ -1,0 +1,34 @@
+<template>
+  <div class="">
+    <itemPage0 v-if="model.viewport === 0"/>
+    <itemPage1 v-else/>
+    <customdialog :dialogVisible='dialogVisible' :msg="dialogMsg"/>
+  </div>
+</template>
+<script>
+import ItemPage0 from './ItemPage0'
+import ItemPage1 from './ItemPage1'
+import Dialog from '../../components/Dialog'
+export default {
+  name: 'ItemPage',
+  data () {
+    return {
+      model: cnfg.model,
+      dialogMsg: '',
+      dialogVisible: false
+    }
+  },
+  components: {
+    itemPage0: ItemPage0,
+    itemPage1: ItemPage1,
+    customdialog: Dialog
+  },
+  mounted: function () {
+    var self = this
+    this.$root.$on('openDialog', function (msg) {
+        self.dialogMsg = msg
+        self.dialogVisible = true
+    })
+  }
+}
+</script>

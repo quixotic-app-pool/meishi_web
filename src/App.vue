@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-      <header-component0/>
+      <header-component0 v-if = "model.viewport === 0"/>
+      <header-component v-if = "model.viewport === 1"/>
       <div style="width:100%; height: 52px;"></div>
       <router-view/>
       <!-- <footer-component0 /> -->
@@ -15,6 +16,11 @@ import FooterComponent0 from '@/components/FooterComponent0'
 
 export default {
   name: 'app',
+  data () {
+    return {
+      model: cnfg.model
+    }
+  },
   components: {
     HeaderComponent,
     FooterComponent,

@@ -36,7 +36,7 @@
           </div>
           <div class="zm-one-mid-list">
               <div class="zm-one-mid-list-item" v-for="(item, index) in 10" :key="index">
-                  <img style="width: 50%; height: 150px; object-fit:cover;" src="./img2.jpeg" alt="">
+                  <img style="width: 50%; height: 150px; object-fit:cover;" src="../img2.jpeg" alt="">
                   <div style="width:50%; padding: 0 10px; box-sizing:border-box; display:flex; flex-direction:column; justify-content: center; align-items: flex-start;">
                     <div style="text-align:left; font-size: 20px;font-weight: 700; padding-bottom: 5px;">
                         蔓越莓饼干(图文完全版)
@@ -71,10 +71,10 @@
           <div class="zm-promo-aside-inner">
               <div style="display:flex; align-items:center;">
                 <el-popover ref="popover1" placement="right" title="扫描下方二维码，联系客服" width="200" trigger="hover">
-                  <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="./example_erweima.png" alt="">
+                  <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="../example_erweima.png" alt="">
                 </el-popover>
                   <div v-popover:popover1 style="cursor:pointer; display:flex; flex-direction:row; align-items:center;  padding: 0 0 0 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
-                    <img style="width: auto; height: 50px;" src="./weixin.jpeg" alt="">
+                    <img style="width: auto; height: 50px;" src="../weixin.jpeg" alt="">
                     <div class="">
                       微信联系我们
                     </div>
@@ -84,7 +84,7 @@
           <div class="zm-promo-aside-inner">
               <div style="display:flex; align-items:center;">
                 <el-popover ref="popover1" placement="right" title="支持苹果和安卓手机" width="200" trigger="hover">
-                  <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="./example_erweima.png" alt="">
+                  <img style="width: 100%; height: auto; padding: 2px; box-sizing: border-box;  " src="../example_erweima.png" alt="">
                 </el-popover>
                   <div v-popover:popover1 style="cursor:pointer; display:flex; flex-direction:row; align-items:center;  padding: 0 0 0 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
                     <img style="width: auto; height: 50px;" src="http://www.techreviewer.co.uk/wp-content/uploads/2017/02/apps.jpg" alt="">
