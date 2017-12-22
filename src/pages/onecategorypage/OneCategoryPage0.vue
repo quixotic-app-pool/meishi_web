@@ -31,13 +31,13 @@ export default {
   props: {
     data: {
       type: Object,
-       default: {}
+      default: {}
     }
   },
   methods: {
     moreData () {
       // we find topic & page number from props.data
-      this.$root.$emit("listData", data.topic, data.page + 1)
+      this.$root.$emit('listData', this.data.topic, this.data.page + 1)
     }
   }
 }

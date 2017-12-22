@@ -4,10 +4,6 @@
       <router-link to="/" class="zm-logo" style="text-decoration: none">
         青菜帮
       </router-link>
-      <div class="zm-header-search">
-        <el-autocomplete class="zm-search-inner" v-model="state" :fetch-suggestions="querySearchAsync" placeholder="搜索创业秘方..." @select="handleSelect"></el-autocomplete>
-        <el-button type="primary">搜索</el-button>
-      </div>
     </div>
   </div>
 </template>

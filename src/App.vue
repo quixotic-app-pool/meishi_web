@@ -19,7 +19,7 @@ export default {
   name: 'app',
   data () {
     return {
-      model: cnfg.model
+      model: window.cnfg.model
     }
   },
   components: {

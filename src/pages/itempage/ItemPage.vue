@@ -9,12 +9,11 @@
 import ItemPage0 from './ItemPage0'
 import ItemPage1 from './ItemPage1'
 import Dialog from '../../components/Dialog'
-import axios from 'axios'
 export default {
   name: 'ItemPage',
   data () {
     return {
-      model: cnfg.model,
+      model: window.cnfg.model,
       dialogMsg: '',
       dialogVisible: false
     }
@@ -26,15 +25,15 @@ export default {
   },
   mounted: function () {
     var self = this
-    axios.get('http://localhost:3000/api/fetchrecipe?id=' + self.$route.params.recipe_id)
-    .then(function(res){
+    this.$http.get('http://localhost:3000/api/fetchrecipe?id=' + self.$route.params.recipe_id)
+    .then(function (res) {
       console.log('recipe data from server: ' + JSON.stringify(res))
       // TODO: this will be done when js file sent to server with same domain
       // self = res.data
     })
     this.$root.$on('openDialog', function (msg) {
-        self.dialogMsg = msg
-        self.dialogVisible = true
+      self.dialogMsg = msg
+      self.dialogVisible = true
     })
   }
 }

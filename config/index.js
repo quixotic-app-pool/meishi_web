@@ -5,7 +5,7 @@
  * @Project: one_server
  * @Filename: index.js
  * @Last modified by:   mymac
- * @Last modified time: 2017-11-20T16:36:20+08:00
+ * @Last modified time: 2017-12-22T13:12:26+08:00
  */
 
 
@@ -22,7 +22,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/dev': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/dev': 'http://127.0.0.1:3000'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

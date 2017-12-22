@@ -18,19 +18,19 @@
                 本周流行菜谱
               </div>
               <div class="">
-                <router-link to="/one/2" class="zm-promo-link">
+                <router-link to="/one/0" class="zm-promo-link">
                   全部
                 </router-link>
               </div>
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
-                <el-col :span="8" v-for="(o, index) in 3" :key="o" :offset="index > 0 ? 2 : 0">
-                  <router-link to="/item/323" class="zm-promo-link">
+                <el-col :span="8" v-for="(item, index) in data.length > 0 && data[0].data" :key="index" :offset="index > 0 ? 2 : 0">
+                  <router-link :to="'/item/' + item._id" class="zm-promo-link">
                     <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
                       <img src="https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg" class="image">
                       <div style="padding: 14px;">
-                        <span>Yummy hamburger</span>
+                        <span>{{item.title}}</span>
                       </div>
                     </el-card>
                   </router-link>
@@ -44,19 +44,19 @@
                 活动折扣
               </div>
               <div class="">
-                <router-link to="/one/2" class="zm-promo-link">
+                <router-link to="/one/1" class="zm-promo-link">
                   全部
                 </router-link>
               </div>
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
-                <el-col :span="8" v-for="(o, index) in 3" :key="o" :offset="index > 0 ? 2 : 0">
-                  <router-link to="/item/323" class="zm-promo-link">
+                <el-col :span="8" v-for="(item, index) in data.length > 0 && data[1].data" :key="index" :offset="index > 0 ? 2 : 0">
+                  <router-link :to="'/item/' + item._id" class="zm-promo-link">
                     <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
                       <img src="https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg" class="image">
                       <div style="padding: 14px;">
-                        <span>Yummy hamburger</span>
+                        <span>{{item.title}}</span>
                       </div>
                     </el-card>
                   </router-link>
@@ -77,12 +77,12 @@
             </div>
             <div style="margin-top: 16px;">
               <el-row class="zm-promo-one-list">
-                <el-col :span="8" v-for="(o, index) in 3" :key="o" :offset="index > 0 ? 2 : 0">
-                  <router-link to="/item/323" class="zm-promo-link">
+                <el-col :span="8" v-for="(item, index) in data.length > 0 && data[3].data" :key="index" :offset="index > 0 ? 2 : 0">
+                  <router-link :to="'/item/' + item._id" class="zm-promo-link">
                     <el-card style="cursor: pointer" :body-style="{ padding: '0px' }">
                       <img src="https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg" class="image">
                       <div style="padding: 14px;">
-                        <span>Yummy hamburger</span>
+                        <span>{{item.title}}</span>
                       </div>
                     </el-card>
                   </router-link>
@@ -123,12 +123,12 @@
                 <div style="color: #c0ae7d; margin-bottom: 16px; padding: 10px 0 10px 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
                     热门项目
                 </div>
-                <div  v-for="(item, index) in 5" :key='item'>
-                  <router-link to="/item/323" style="text-decoration: none; color:black; padding: 0 5px 5px 5px; display:flex; flex-direction: row;">
+                <div  v-for="(item, index) in data.length > 0 && data[2].data" :key='index'>
+                  <router-link :to="'/item/' + item._id" style="text-decoration: none; color:black; padding: 0 5px 5px 5px; display:flex; flex-direction: row;">
                     <img style="filter: blur(1px); height: 70px; width: 50%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg" alt="">
                     <div style="display: flex; flex-direction: column; justify-content:flex-start;">
                       <div style="padding-left: 3px; font-weight:bold; text-align: left;">
-                        超级好吃无敌蛋糕
+                        {{item.title}}
                       </div>
                     </div>
                   </router-link>
@@ -145,8 +145,8 @@ export default {
   name: 'MainPage',
   props: {
     data: {
-      type: Object,
-      default: {}
+      type: Array,
+      default: []
     }
   },
   data () {

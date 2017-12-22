@@ -5,7 +5,7 @@
  * @Project: one_server
  * @Filename: main.js
  * @Last modified by:   mymac
- * @Last modified time: 2017-12-19T10:00:55+08:00
+ * @Last modified time: 2017-12-22T13:09:42+08:00
  */
 
 // The Vue build version to load with the `import` command
@@ -13,25 +13,25 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
+import router from './router'
+import App from './App'
+import VueSocketio from 'vue-socket.io'
+import VueTouchRipple from 'vue-touch-ripple'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import VueResource from 'vue-resource'
 
 window.cnfg = {}
 window.cnfg.model = {}
 window.cnfg.methods = require('./module/methods')
-window.addEventListener('resize', window.cnfg.methods.debounce(window.cnfg.methods.resize, 50));
+window.addEventListener('resize', window.cnfg.methods.debounce(window.cnfg.methods.resize, 50))
 
-cnfg.methods.resize();
+window.cnfg.methods.resize()
 
 // import VueProgressiveImage from 'vue-progressive-image'
 // import { MdButton, MdContent, MdTabs } from 'vue-material/dist/components'
-import VueTouchRipple from 'vue-touch-ripple'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
+
 // import VueSwal from 'vue-swal'
 
-import VueSocketio from 'vue-socket.io'
-
-import App from './App'
-import router from './router'
 // require('vue-material/dist/vue-material.min.css')
 require('swiper/dist/css/swiper.css')
 // import VueImg from 'v-img'
@@ -51,6 +51,7 @@ Vue.use(VueTouchRipple)
 Vue.use(VueAwesomeSwiper)
 
 Vue.use(VueSocketio, 'http://localhost:3000')
+Vue.use(VueResource)
 
 Vue.config.productionTip = false
 

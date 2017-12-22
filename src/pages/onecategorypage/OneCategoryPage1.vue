@@ -91,7 +91,7 @@ export default {
   props: {
     data: {
       type: Object,
-       default: {}
+      default: {}
     }
   },
   data () {
@@ -106,7 +106,7 @@ export default {
       // and we just update the data array to update the UI
       // this.page = ?
       // we find topic & page number from props.data
-      this.$root.$emit("listData", data.topic, data.page + 1)
+      this.$root.$emit('istData', this.data.topic, this.data.page + 1)
     }
   }
 }

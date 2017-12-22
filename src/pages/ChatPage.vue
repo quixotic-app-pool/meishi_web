@@ -58,8 +58,6 @@ min-height:40px;
   </div>
 </template>
 <script>
-import axios from 'axios'
-// https://alligator.io/vuejs/rest-api-axios/
 //
 // [{userId: '13913351453', csunread: 1, msg: [{from:'', txt: '你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'},  {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]},
 // {userId: '13913351453', csunread: 12, msg: [{from:'', txt: '2你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'},  {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]},
@@ -90,34 +88,34 @@ export default {
       console.log('socket connected from vue client')
       this.$socket.emit('customerServiceConnected', {})
     },
-    customerservice: function() {
-      console.log("I am customer service")
+    customerservice: function () {
+      console.log('I am customer service')
     },
-    csack: function(data) {
+    csack: function (data) {
       console.log('receive ack from server: ' + JSON.stringify(data))
     },
-    users: function(data) {
+    users: function (data) {
       // 先只考虑用户级翻页，消息级暂时认为很少，全部加载
-      if(data.info === 'ok') {
+      if (data.info === 'ok') {
         // console.log('users: ' + JSON.stringify(data.pack));
-          this.users = data.pack
-          this.userPage = 1
-        }
+        this.users = data.pack
+        this.userPage = 1
+      }
     },
-    userExistingMsg: function(data) {
+    userExistingMsg: function (data) {
       // TODO: receive user msg
-      if(this.users) {
+      if (this.users) {
         var self = this
-        this.users.forEach(function(item){
-          console.log("item: " + JSON.stringify(item));
-          console.log("data: " + JSON.stringify(data));
-          if(item.number === data.userId) {
-            console.log("looK:" + JSON.stringify(data));
-            console.log("item.messages:" + JSON.stringify(item.messages));
+        this.users.forEach(function (item) {
+          console.log('item: ' + JSON.stringify(item))
+          console.log('data: ' + JSON.stringify(data))
+          if (item.number === data.userId) {
+            console.log('looK:' + JSON.stringify(data))
+            console.log('item.messages:' + JSON.stringify(item.messages))
             item.messages.push(data.msg)
-            console.log("item.messages:" + JSON.stringify(item.messages));
-            setTimeout(function(){
-              var objDiv = document.getElementById("chatbox")
+            console.log('item.messages:' + JSON.stringify(item.messages))
+            setTimeout(function () {
+              var objDiv = document.getElementById('chatbox')
               objDiv.scrollTop = objDiv.scrollHeight
             }, 0)
             self.openNotification(data)
@@ -131,12 +129,12 @@ export default {
     // this.openNotification({userId: 138132323, msg: "testing" })
   },
   methods: {
-    moreUser(){
+    moreUser () {
       var self = this
       self.loadingUser = true
-      axios.post('/api/moreuser', {
+      this.$http.post('/api/moreuser', {
         page: this.userPage
-      }).then(function(res){
+      }).then(function (res) {
         console.log('feeback of udpating csunread from server: ' + JSON.stringify(res))
         self.loadingUser = false
         this.userPage++
@@ -149,30 +147,30 @@ export default {
     //     self.loadingMsg = false
     //   }, 1000)
     // },
-    openNotification(data) {
-       const h = this.$createElement;
+    openNotification (data) {
+      const h = this.$createElement
 
-       this.$notify({
-         title: '来自用户' + data.userId,
-         message: h('i', { style: 'color: teal' }, data.msg)
-       });
-     },
-     updateMsg: function (user) {
+      this.$notify({
+        title: '来自用户' + data.userId,
+        message: h('i', { style: 'color: teal' }, data.msg)
+      })
+    },
+    updateMsg: function (user) {
       user.csunread = 0
-      // TODO: update csunread  cross orgin issue
-      // axios.post('http:\/\/127.0.0.1:3000/api/updatecsunread', {
-      //   body: user.userId
-      // }).then(function(res){
-      //   console.log('feeback of udpating csunread from server: ' + JSON.stringify(res));
-      // })
+       // TODO: update csunread  cross orgin issue
+       // this.$http.post('http:\/\/127.0.0.1:3000/api/updatecsunread', {
+       //   body: user.userId
+       // }).then(function(res){
+       //   console.log('feeback of udpating csunread from server: ' + JSON.stringify(res));
+       // })
       this.messages = user.messages
-      setTimeout(function(){
-        var objDiv = document.getElementById("chatbox")
+      setTimeout(function () {
+        var objDiv = document.getElementById('chatbox')
         objDiv.scrollTop = objDiv.scrollHeight
       }, 0)
     },
     init: function () {
-      let message = {from: '', txt: 'Tell me something'}
+      // let message = {from: '', txt: 'Tell me something'}
       // this.messages = this.users[0].msg
       // this.users[0].csunread = 0
       this.ping()
@@ -181,7 +179,7 @@ export default {
       if (this.txt.length === 0) return
       let message = {from: 'cs', txt: this.txt}
       this.$socket.emit('csmessage', {userId: this.currentUser, message: message})
-      //这边不知道怎么找回调，就手动更新信息，但是需要后台给出ack才能确认此信息完成发送，可以模拟微信的mini loading或者whatsapp
+      // 这边不知道怎么找回调，就手动更新信息，但是需要后台给出ack才能确认此信息完成发送，可以模拟微信的mini loading或者whatsapp
       // TODO: 加ack识别符号，不着急，可以作为bug处理
       this.messages.push(message)
       // var self = this
@@ -189,7 +187,7 @@ export default {
       //   let answer = {from: '', txt: 'Lorem ipsum dolor sit amet...'}
       //   self.messages.push(answer)
       // }, 1500)
-      var objDiv = document.getElementById("chatbox")
+      var objDiv = document.getElementById('chatbox')
       objDiv.scrollTop = objDiv.scrollHeight
       this.txt = ''
     },

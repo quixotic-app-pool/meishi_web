@@ -11,7 +11,7 @@ export default {
   name: 'MainPage',
   data () {
     return {
-      model: cnfg.model,
+      model: window.cnfg.model,
       data: {},
       topic: ''
     }
@@ -23,15 +23,15 @@ export default {
   mounted () {
     var self = this
     this.requestData(self.$route.params.topic, 0)
-    this.$root.$on("listData", function(topic, page) {
+    this.$root.$on('listData', function (topic, page) {
       self.requestData(topic, page)
     })
   },
   methods: {
     requestData (topic, page) {
-      var self = this
-      axios.get('http://localhost:3000/api/fetchlist?type=' + topic + '&page=' + page)
-      .then(function(res){
+      // var self = this
+      this.$http.get('http://localhost:3000/api/fetchlist?type=' + topic + '&page=' + page)
+      .then(function (res) {
         console.log('topic data from server: ' + JSON.stringify(res))
         // TODO: this will be done when js file sent to server with same domain
         // self.data = res.data
