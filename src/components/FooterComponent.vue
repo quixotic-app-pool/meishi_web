@@ -14,7 +14,7 @@
           <a href="#" class="zm-footer-coop">苏ICP备17068460号</a>
         </div>
       </div>
-      <div class="zm-footer-right">
+      <div @click="superGate()" class="zm-footer-right">
          人生唯有美食和爱不可辜负
       </div>
     </div>
@@ -24,11 +24,19 @@
 export default {
   name: 'FooterComponent',
   data () {
-    return {}
+    return {
+      count: 5
+    }
   },
   methods: {
     openDialog () {
       this.$root.$emit('openDialog', '热线电话13988888888')
+    },
+    superGate () {
+      this.count--
+      if (this.count === 0) {
+        this.$router.push({path: '/chat'})
+      }
     }
   }
 }

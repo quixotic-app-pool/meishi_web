@@ -5,7 +5,7 @@
         <div class="zm-item-breadcrumb">
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>{{data.type}}</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ path: '/one/' +  topic}">{{data.type}}</el-breadcrumb-item>
             <el-breadcrumb-item>{{data.title}}</el-breadcrumb-item>
           </el-breadcrumb>
         </div>
@@ -122,7 +122,8 @@ export default {
   },
   data () {
     return {
-      hotList: []
+      hotList: [],
+      topicArray: ['本周流行菜谱', '活动折扣', '热门项目', '最新上架']
     }
   },
   directives: {
@@ -136,7 +137,23 @@ export default {
       self.hotList = res.body.data
     })
   },
+  computed: {
+    topic () {
+      // workaround, not ideal though
+      var topic
+      for (let key in this.topicArray) {
+        if (this.topicArray[key] === this.data.type) {
+          topic = key
+          break
+        }
+      }
+      return topic
+    }
+  },
   methods: {
+    routeToCategory () {
+      alert('f')
+    },
     swicthRecipe (_id) {
       this.$router.replace({path: '/item/' + _id})
       location.reload(true)

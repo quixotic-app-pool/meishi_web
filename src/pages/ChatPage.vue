@@ -25,50 +25,52 @@ min-height:40px;
 </style>
 <template>
   <div class="">
-    <div style="margin-top: 40px;font-size: 40px;">
-      客服与用户交流信息渠道
-    </div>
-    <div v-loading="loadingUser" style="display: flex; flex-direction: row; justify-content: center; margin-top: 50px;margin-bottom: 100px;">
-      <div style="border-radius: 10px 0 0 10px;overflow: scroll; width: 20%; min-width: 200px; height:500px; border: 1px solid rgb(230,230,230);">
-        <div v-for="(user, index) in users" :key="index">
-          <el-badge :value="user.csunread" style="width:80%; margin: 10px">
-            <el-button style="width:100%; height: 50px;" @click = "updateMsg(user)">
-              <div style="weight: bold;">{{user.number}}</div>
-            </el-button>
-          </el-badge>
-        </div>
-        <el-button type="success" style="margin-bottom: 10px" v-on:click="moreUser()" >向下翻</el-button>
+    <div v-if="!loggedIn" style="height: 300px; margin-top: 100px; display: flex; flex-direction:column; align-items: center">
+      <div style="display:flex;width: 500px; margin-bottom: 50px">
+          <el-input placeholder="输入手机号" v-model="csNumber"></el-input>
+          <el-button v-if="freezed === 0" @click="requestCode()" style="margin-left: 30px;" type="success" round>请求验证码</el-button>
+          <el-button v-else type="success" style="margin-left: 30px; width: 147px;" round disabled>{{freezed}}</el-button>
       </div>
-      <div style="width: 50%;">
-        <div id="chatbox" v-loading="loadingMsg" style="border-radius: 0 10px 10px 0; width: 100%; height: 500px; overflow: scroll; background-color: rgb(230,230,230)">
-          <!-- <el-button type="success" style="margin-top: 10px" v-on:click="moreMessage()" >向上翻</el-button> -->
-          <div class="message-line" style="" v-for="(message, index) in messages" :key="index">
-              <div class="message" :class="message.from">
-                <span>{{message.text}}</span>
-                <span style="display: block;font-size: 12px;text-align: left;opacity: 0.5;">{{message.createdAt}}</span>
-              </div>
+      <div style="display:flex;width: 500px;">
+          <el-input placeholder="输入验证码" v-model="csVeriCode"></el-input>
+          <el-button @click="verifyCode()" style="margin-left: 30px" type="success" round>提交验证码</el-button>
+      </div>
+    </div>
+    <div v-else class="">
+      <div style="margin-top: 40px;font-size: 40px;">
+        客服与用户交流信息渠道
+      </div>
+      <div v-loading="loadingUser" style="display: flex; flex-direction: row; justify-content: center; margin-top: 50px;margin-bottom: 100px;">
+        <div style="border-radius: 10px 0 0 10px;overflow: scroll; width: 20%; min-width: 200px; height:500px; border: 1px solid rgb(230,230,230);">
+          <div v-for="(user, index) in users" :key="index">
+            <el-badge :value="user.csunread" style="width:80%; margin: 10px">
+              <el-button style="width:100%; height: 50px;" @click = "updateMsg(user)">
+                <div style="weight: bold;">{{user.number}}</div>
+              </el-button>
+            </el-badge>
           </div>
+          <el-button type="success" style="margin-bottom: 10px" v-on:click="moreUser()" >向下翻</el-button>
         </div>
-        <div style="margin-top: 10px">
-          <input style="height: 30px;width: 200px;font-size: 15px;" placeholder="请在这里回复客户信息..." @keyup.enter="send()" v-model="txt" />
-          <el-button type="warning" v-on:click="send()" >发送</el-button>
+        <div style="width: 50%;">
+          <div id="chatbox" v-loading="loadingMsg" style="border-radius: 0 10px 10px 0; width: 100%; height: 500px; overflow: scroll; background-color: rgb(230,230,230)">
+            <!-- <el-button type="success" style="margin-top: 10px" v-on:click="moreMessage()" >向上翻</el-button> -->
+            <div class="message-line" style="" v-for="(message, index) in messages" :key="index">
+                <div class="message" :class="message.from">
+                  <span>{{message.text}}</span>
+                  <span style="display: block;font-size: 12px;text-align: left;opacity: 0.5;">{{message.createdAt}}</span>
+                </div>
+            </div>
+          </div>
+          <div style="margin-top: 10px">
+            <input style="height: 30px;width: 200px;font-size: 15px;" placeholder="请在这里回复客户信息..." @keyup.enter="send()" v-model="txt" />
+            <el-button type="warning" v-on:click="send()" >发送</el-button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-//
-// [{userId: '13913351453', csunread: 1, msg: [{from:'', txt: '你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'},  {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]},
-// {userId: '13913351453', csunread: 12, msg: [{from:'', txt: '2你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'},  {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]},
-// {userId: '13913351454', csunread: 13, msg: [{from:'', txt: '3你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '3你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '3你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '3你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '3你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '3你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '3你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '3你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '3你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '3你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'}, {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]},
-// {userId: '13913351455', csunread: 14, msg: [{from:'', txt: '4你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'},  {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]},
-// {userId: '13913351456', csunread: 15, msg: [{from:'', txt: '5你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'},  {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]},
-// {userId: '13913351457', csunread: 16, msg: [{from:'', txt: '6你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'},  {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]},
-// {userId: '13913351455', csunread: 14, msg: [{from:'', txt: '4你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'},  {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]},
-// {userId: '13913351456', csunread: 15, msg: [{from:'', txt: '5你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'},  {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]},
-// {userId: '13913351457', csunread: 16, msg: [{from:'', txt: '6你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'},  {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]},
-// {userId: '13913351458', csunread: 7, msg: [{from:'', txt: '7你好，请问这个怎么学？', createdTime: '2017年12月16日12：30'},  {from:'cs', txt: '您好，请问您指的哪一个？', createdTime: '2017年12月16日12：30'}, {from:'', txt: '就是这个呀', createdTime: '2017年12月16日12：30'}]} ],
 
 export default {
   name: 'ChatPage',
@@ -80,7 +82,11 @@ export default {
       currentUser: '',
       loadingMsg: false,
       loadingUser: false,
-      userPage: 0
+      userPage: 0,
+      loggedIn: false,
+      csNumber: '',
+      csVeriCode: '',
+      freezed: 0
     }
   },
   sockets: {
@@ -129,6 +135,36 @@ export default {
     // this.openNotification({userId: 138132323, msg: "testing" })
   },
   methods: {
+    requestCode () {
+      var self = this
+      self.$http.post('/dev/api/csnumber', {
+        number: this.csNumber
+      }).then(function (res) {
+          // TODO: code sent
+        if (res.body.success === 'ok') {
+          self.freezed = 60
+          var timer = setInterval(function () {
+            self.freezed--
+            if (self.freezed === 0) {
+              clearInterval(timer)
+            }
+          }, 1000)
+        }
+      })
+    },
+    verifyCode () {
+      var self = this
+      self.$http.post('/dev/api/verifycs', {
+        number: this.csNumber,
+        sixdigitcode: this.verifyCode
+      })
+      .then(function (res) {
+        // TODO: there is a gate from client, another gate will be set from server to ensure security
+        if (res.body.success === 'ok') {
+          self.loggedIn = true
+        }
+      })
+    },
     moreUser () {
       var self = this
       self.loadingUser = true
