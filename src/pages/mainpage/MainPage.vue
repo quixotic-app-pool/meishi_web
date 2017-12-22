@@ -21,15 +21,15 @@ export default {
   },
   mounted () {
     var self = this
-    console.log('going to call server for main page data')
+    // console.log('going to call server for main page data')
     // 跨域问题 http://www.jianshu.com/p/75a9f9b5a1bb
     this.$http.get('/dev/api/fetchmainpagecontent')
     .then(function (res) {
       // console.log('main page data from server: ' + JSON.stringify(res.body.data))
       self.data = res.body.data
-      console.log('self.data:' + JSON.stringify(self.data))
+      // console.log('self.data:' + JSON.stringify(self.data))
     })
-    this.$root.$on('openMainPageDialog', function (msg) {
+    this.$root.$on('openDialog', function (msg) {
       self.dialogMsg = msg
       self.dialogVisible = true
     })

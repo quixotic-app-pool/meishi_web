@@ -70,7 +70,7 @@
                 最新上架
               </div>
               <div class="">
-                <router-link to="/one/2" class="zm-promo-link">
+                <router-link to="/one/3" class="zm-promo-link">
                   全部
                 </router-link>
               </div>

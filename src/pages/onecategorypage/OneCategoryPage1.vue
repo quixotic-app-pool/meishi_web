@@ -5,36 +5,37 @@
         <div class="zm-item-breadcrumb">
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>本周流行</el-breadcrumb-item>
-            <el-breadcrumb-item>铸铁锅版焖饭--黑胡椒牛肉焖饭 </el-breadcrumb-item>
+            <el-breadcrumb-item>{{topicArray[topic]}}</el-breadcrumb-item>
           </el-breadcrumb>
         </div>
       </div>
       <div class="zm-one-box">
         <div class="zm-one-left">
           <div class="zm-one-suggestion">
-              <a href="#" v-for="(item, index) in ['本周流行', '活动折扣', '热门项目', '最新上架']" :key="index">{{item}}</a>
+              <a href="#" @click="resetData(index)" v-for="(item, index) in topicArray" :key="index">{{item}}</a>
           </div>
         </div>
         <div class="zm-one-mid">
           <div class="zm-one-mid-title">
-              本周流行
+              {{topicArray[topic]}}
           </div>
           <div class="zm-one-mid-list">
-              <div class="zm-one-mid-list-item" v-for="(item, index) in 10" :key="index">
-                  <img style="width: 50%; height: 150px; object-fit:cover;" src="../img2.jpeg" alt="">
-                  <div style="width:50%; padding: 0 10px; box-sizing:border-box; display:flex; flex-direction:column; justify-content: center; align-items: flex-start;">
-                    <div style="text-align:left; font-size: 20px;font-weight: 700; padding-bottom: 5px;">
-                        蔓越莓饼干(图文完全版)
-                        <span style="color:white; background-color:rgb(254,197,10); font-size:12px; padding:2px 3px;">独家</span>
-                        <span style="opacity:0.8; background-color:rgb(240, 242, 247); font-size:12px; padding:2px 3px;">步骤图</span>
+              <div class="" v-for="(item, index) in data" :key="index">
+                <router-link :to="'/item/' + item._id" class="zm-one-mid-list-item" style="color: black; text-decoration: none;">
+                    <img style="width: 50%; height: 150px; object-fit:cover;" src="../img2.jpeg" alt="">
+                    <div style="width:50%; padding: 0 10px; box-sizing:border-box; display:flex; flex-direction:column; justify-content: center; align-items: flex-start;">
+                      <div style="display:flex;align-items: center;font-size: 20px;font-weight: 700; padding-bottom: 5px;">
+                          <span>{{item.title}}</span>
+                          <span style="margin-left:5px; color:white; background-color:rgb(254,197,10); font-size:12px; padding:2px 3px 2px 3px;">{{item.tag}}</span>
+                      </div>
                     </div>
-                  </div>
+                </router-link>
               </div>
           </div>
           <div class="zm-one-mid-pagination">
-            <el-pagination @current-change="changePage($event)" layout="prev, pager, next" :total="50">
-            </el-pagination>
+            <div style="width: 100%;">
+              <el-button @click="moreData()" style="background-color:white; color: #fa5555; border: 1px solid #fa5555; font-size: 20px; width: 90%;" type="danger" name="button">查看更多结果</el-button>
+            </div>
           </div>
         </div>
         <div class="zm-one-right">
@@ -69,13 +70,15 @@
               <div style="margin-bottom: 16px; padding: 10px 0 10px 10px; text-align: left; border-bottom: 1px solid #f0f2f7; font-size: 20px;font-weight: 700;">
                   热门项目
               </div>
-              <div style="cursor: pointer;padding: 0 5px 5px 5px; display:flex; flex-direction: row;" v-for="(item, index) in 5" :key='item'>
-                  <img style="filter: blur(1px); height: 70px; width: 50%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg" alt="">
-                  <div style="display: flex; flex-direction: column; justify-content:flex-start;">
-                    <div style="padding-left: 3px; font-weight:bold; text-align: left;">
-                      超级好吃无敌蛋糕
+              <div style="" v-for="(item, index) in hotList" :key='index'>
+                  <router-link :to="'/item/' + item._id" class="zm-one-mid-list-item" style="cursor: pointer;padding: 0 5px 5px 5px; display:flex; flex-direction: row;color: black; text-decoration: none;">
+                    <img style="filter: blur(1px); height: 70px; width: 50%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg" alt="">
+                    <div style="display: flex; flex-direction: column; justify-content:flex-start;">
+                      <div style="padding-left: 3px; font-weight:bold; text-align: left;">
+                        {{item.title}}
+                      </div>
                     </div>
-                  </div>
+                  </router-link>
               </div>
             </div>
           </div>
@@ -90,23 +93,39 @@ export default {
   name: 'OneCategoryPage1',
   props: {
     data: {
-      type: Object,
-      default: {}
+      type: Array,
+      default: []
+    },
+    topic: {
+      type: String,
+      default: ''
+    },
+    page: {
+      type: Number,
+      default: 0
     }
   },
   data () {
     return {
       activeNames: '',
-      page: 0
+      topicArray: ['本周流行菜谱', '活动折扣', '热门项目', '最新上架'],
+      hotList: []
     }
   },
+  mounted () {
+    var self = this
+    this.$http.get('/dev/api/fetchlist?type=2&page=0')
+    .then(function (res) {
+      console.log('hot list data from server: ' + JSON.stringify(res.body.data))
+      self.hotList = res.body.data
+    })
+  },
   methods: {
-    changePage (page) {
-      // TODO: because we need to calculate the page number of all, we might need to get all data one time
-      // and we just update the data array to update the UI
-      // this.page = ?
-      // we find topic & page number from props.data
-      this.$root.$emit('istData', this.data.topic, this.data.page + 1)
+    moreData () {
+      this.$root.$emit('listData', this.topic, this.page + 1)
+    },
+    resetData (index) {
+      this.$root.$emit('listData', index, 0, true)
     }
   }
 }

@@ -5,12 +5,12 @@
         <div class="zm-item-breadcrumb">
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item>本周流行</el-breadcrumb-item>
-            <el-breadcrumb-item>铸铁锅版焖饭--黑胡椒牛肉焖饭 </el-breadcrumb-item>
+            <el-breadcrumb-item>{{data.type}}</el-breadcrumb-item>
+            <el-breadcrumb-item>{{data.title}}</el-breadcrumb-item>
           </el-breadcrumb>
         </div>
         <div class="zm-item-title">
-          铸铁锅版焖饭--黑胡椒牛肉焖饭
+          {{data.title}}
         </div>
         <div class="">
           <img style="width: 100%;" src="../itemAssets/1.jpg" alt="">
@@ -19,22 +19,19 @@
            <el-button @click="addFavorite()" style="font-size: 18px;" type="danger" round>收藏</el-button>
         </div>
         <div style="text-align: left; margin: 30px 0 16px 0; font-size: 18px; line-height: 1.8;">
-          小时候曾经吃过朋友家做的“新疆手抓饭”味道一直记忆犹新，
-          把肉跟胡萝卜混在米饭中装在一个小饭盒里放在锅中蒸熟,肉的味道进入到了米饭里面,太赞了!
-          多年后,新入手了一个铸铁锅,看了很多用铸铁锅焖饭的食谱,所以结合了西餐焖饭的原理,
-          自己没事尝试了这个黑胡椒牛肉焖饭,虽然有点非中非西吧,但是个人觉得入手简单,对于偷懒的人简直就是福音啊!现在就分享一下!
+          {{data.description}}
         </div>
         <div class="">
           <div class="zm-item-right-title" style="font-size:24px; padding: 10px 0;">
             用料
           </div>
-          <div class="" v-for="(item, index) in ingredients" :key="index">
+          <div class="" v-for="(item, index) in data.ingredients" :key="index">
             <div style="font-size: 18px;line-height: 50px;display: flex;text-align:left; border-bottom:1px solid #f3f4f5;">
               <div style="flex:1; padding-left: 10px;">
                 {{item.name}}
               </div>
               <div style="flex:1;padding-left: 20px;">
-                {{item.value}}
+                {{item.quantity}}{{item.unit}}
               </div>
             </div>
           </div>
@@ -75,17 +72,17 @@
     <!-- 主要制作过程，图文兼并 -->
     <div class="zm-item-recipe-container">
       <div class="zm-item-right-title" style="font-size:24px; padding: 50px 0 20px 0;">
-        铸铁锅版焖饭--黑胡椒牛肉焖饭的做法
+        {{data.title}}的做法
       </div>
-      <div class="zm-item-recipe-loop" style="padding: 10px 0 20px 0;" v-for="(item, index) in recipe" :key="index">
+      <div class="zm-item-recipe-loop" style="padding: 10px 0 20px 0;" v-for="(item, index) in data.steps" :key="index">
         <div  class="zm-item-recipe-pic" style="border-bottom: 1px solid #f3f3f3; width: 70%; padding-right: 10px; padding-bottom: 20px;">
-          <div v-for="(el, o) in item.imgUrls" :key="o">
+          <div v-for="(el, o) in ['https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg']" :key="o">
             <img style="width: 100%; height: auto; object-fit: cover;" :src="el" alt="">
           </div>
         </div>
         <div class="zm-item-recipe-description" style="border:1px solid rgb(243, 243, 243);padding: 10px; text-align:left; width: 30%; align-self: flex-start;" v-sticky= '{ zIndex: 1, stickyTop: 70}'>
             <div class="zm-item-right-title" style="border-bottom: 1px solid #f3f3f3;">
-              {{item.key}}
+              第{{index + 1}}步
             </div>
             <div style="font-size: 18px;line-height: 1.8;">
               {{item.description}}
@@ -98,15 +95,15 @@
           热门项目
         </div>
         <el-row :gutter="20" >
-          <el-col :span="6" v-for="(o, index) in 4" :key="o">
-            <router-link to="/item/323" style="color: black; text-decoration: none;">
-              <el-card :body-style="{ padding: '0px' }">
-                <img style="height: 120px; width: 100%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg">
-                <div style="padding: 10px 2px;">
-                  <span>烤箱菜走起--蒜蓉烤茄子</span>
+          <el-col :span="6" v-for="(item, index) in hotList" :key="index">
+              <el-card :body-style="{ padding: '0px', cursor: 'pointer'}">
+                <div @click="swicthRecipe(item._id)"  class="">
+                  <img style="height: 120px; width: 100%; object-fit: cover;" src="http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg">
+                  <div style="padding: 10px 2px;">
+                    <span>{{item.title}}</span>
+                  </div>
                 </div>
               </el-card>
-            </router-link>
           </el-col>
         </el-row>
       </div>
@@ -117,21 +114,34 @@
 import VueSticky from '../../components/StickyIndex.js'
 export default {
   name: 'ItemPage1',
+  props: {
+    data: {
+      type: Object,
+      default: {}
+    }
+  },
   data () {
     return {
-      ingredients: [{name: '牛肉', value: '半斤'}, {name: '胡萝卜', value: '1根'}, {name: '洋葱', value: '1个'}, {name: '青豆', value: '适量'}, {name: '大米', value: '2量杯'}, {name: '水', value: '2.5量杯'},
-               {name: '生抽，蚝油，料酒', value: '各1汤勺'}, {name: '白胡椒，黑胡椒碎，五香粉，辣椒粉，孜然，芝麻', value: '适量'}, {name: '葱蒜末', value: '少许'}],
-      recipe: [{key: '第一步', imgUrls: ['https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg', 'http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg'], description: '牛肉切成小块,加入耗油,生抽,料酒,黑胡椒碎,孜然,辣椒粉,五香粉,辣椒粉,白胡椒,淀粉抓匀腌制10分钟'},
-               {key: '第二步', imgUrls: ['http://cphualientour.weebly.com/uploads/4/5/8/0/45800523/3058957_orig.jpg'], description: '大米淘洗干净后,放在水中浸泡30分钟.洋葱切碎,胡萝卜切丁,备用'},
-               {key: '第三步', imgUrls: ['https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg', 'http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg', 'http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg', 'http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg'], description: '锅中放油,放入葱蒜,五香粉,芝麻爆香,之后放入腌制好的牛肉炒熟,最后放入洋葱碎跟胡萝卜还有青豆一起炒熟之后加入浸泡的大米,炒一下'},
-               {key: '第四步', imgUrls: ['http://cphualientour.weebly.com/uploads/4/5/8/0/45800523/3058957_orig.jpg', 'http://www.yelin-spa.com.tw/food/img/DSC_9659.jpg', 'http://cphualientour.weebly.com/uploads/4/5/8/0/45800523/3058957_orig.jpg', 'https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg'], description: '放入水(水量是大米量的1.2倍)盖上盖子,开大火烧开后转小火煮30分钟,然后停火后再闷15分钟.搞定!'},
-               {key: '第五步', imgUrls: ['https://img1.qunarzz.com/travel/poi/1502/75/0798be182d7af0.jpg_r_480x360x95_bb0773dc.jpg'], description: '成品图'}]
+      hotList: []
     }
   },
   directives: {
     'sticky': VueSticky
   },
+  mounted () {
+    var self = this
+    this.$http.get('/dev/api/fetchlist?type=2&page=0')
+    .then(function (res) {
+      console.log('hot list data from server: ' + JSON.stringify(res.body.data))
+      self.hotList = res.body.data
+    })
+  },
   methods: {
+    swicthRecipe (_id) {
+      this.$router.replace({path: '/item/' + _id})
+      location.reload(true)
+      window.scrollTo(0, 0)
+    },
     addFavorite () {
       this.$root.$emit('openDialog', '下载我们的APP可以永久收藏，还有更多实用功能帮您了解我们的热门项目！')
     }

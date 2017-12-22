@@ -34,7 +34,7 @@
         <div class="swiper-inner">
           <swiper :options="swiperOption">
             <swiper-slide style="display:flex; flex-direction: column; justify-content:space-between; align-items: center;" v-for="(item, index) in data.length > 0 && data[1].data" :key="index">
-              <router-link to="/item/323" style="color: black; text-decoration: none;">
+              <router-link :to="'/item/' + item._id" style="color: black; text-decoration: none;">
                 <img style="width:100%; height:200px; object-fit: cover;" src="../img2.jpeg" alt="">
                 <div style="height:100px; display:flex; flex-direction: column; justify-content:center; align-items: center;">
                   <div class="">
@@ -52,6 +52,9 @@
         <div style="display:flex; justify-content: space-between;">
           <div style="font-weight: 700;">
             热门项目
+          </div>
+          <div style="color: #fa5555" class="pointer">
+            打开APP更多热门
           </div>
         </div>
         <div class="zm-main0-list">
@@ -76,7 +79,7 @@
             最新上架
           </div>
           <div style="color: #fa5555" class="pointer">
-            打开APP更多热门
+            打开APP更多新品
           </div>
         </div>
         <div class="swiper-inner">

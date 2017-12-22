@@ -1,7 +1,7 @@
 <template>
   <div class="">
-    <itemPage0 v-if="model.viewport === 0"/>
-    <itemPage1 v-else/>
+    <itemPage0 :data="data" v-if="model.viewport === 0"/>
+    <itemPage1 :data="data" v-else/>
     <customdialog :dialogVisible='dialogVisible' :msg="dialogMsg"/>
   </div>
 </template>
@@ -15,7 +15,8 @@ export default {
     return {
       model: window.cnfg.model,
       dialogMsg: '',
-      dialogVisible: false
+      dialogVisible: false,
+      data: {}
     }
   },
   components: {
@@ -25,11 +26,10 @@ export default {
   },
   mounted: function () {
     var self = this
-    this.$http.get('http://localhost:3000/api/fetchrecipe?id=' + self.$route.params.recipe_id)
+    this.$http.get('/dev/api/fetchrecipe?id=' + self.$route.params.recipe_id)
     .then(function (res) {
-      console.log('recipe data from server: ' + JSON.stringify(res))
-      // TODO: this will be done when js file sent to server with same domain
-      // self = res.data
+      console.log('recipe data from server: ' + JSON.stringify(res.body.data))
+      self.data = res.body.data
     })
     this.$root.$on('openDialog', function (msg) {
       self.dialogMsg = msg

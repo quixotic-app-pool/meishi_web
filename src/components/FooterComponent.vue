@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     openDialog () {
-      this.$root.$emit('openMainPageDialog', '热线电话13988888888')
+      this.$root.$emit('openDialog', '热线电话13988888888')
     }
   }
 }

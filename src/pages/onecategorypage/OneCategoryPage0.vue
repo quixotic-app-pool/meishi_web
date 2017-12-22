@@ -6,15 +6,17 @@
         本周流行
       </div>
       <div style="width:100%;">
-        <div style="width:100%;" v-for="(item, index) in 10" :key="index">
-          <img style="width: 100%; height: 200px; object-fit: cover;" src="../img2.jpeg" alt="">
-          <div style="height:100px; display:flex; justify-content:flex-start;  align-items:center;">
-            <div style="width:100%;display:flex; flex-direction:column; align-items:center; justify-content:center">
-              <div style="font-size: 20px;">
-                粽香排骨卷
+        <div style="width:100%;" v-for="(item, index) in data" :key="index">
+          <router-link :to="'/item/' + item._id" style="color: black; text-decoration: none;">
+            <img style="width: 100%; height: 200px; object-fit: cover;" src="../img2.jpeg" alt="">
+            <div style="height:100px; display:flex; justify-content:flex-start;  align-items:center;">
+              <div style="width:100%;display:flex; flex-direction:column; align-items:center; justify-content:center">
+                <div style="font-size: 20px;">
+                  {{item.title}}
+                </div>
               </div>
             </div>
-          </div>
+          </router-link>
         </div>
       </div>
 
@@ -30,14 +32,22 @@ export default {
   name: 'OneCategoryPage0',
   props: {
     data: {
-      type: Object,
-      default: {}
+      type: Array,
+      default: []
+    },
+    topic: {
+      type: String,
+      default: ''
+    },
+    page: {
+      type: Number,
+      default: 0
     }
   },
   methods: {
     moreData () {
       // we find topic & page number from props.data
-      this.$root.$emit('listData', this.data.topic, this.data.page + 1)
+      this.$root.$emit('listData', this.topic, this.page + 1)
     }
   }
 }
